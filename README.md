@@ -2,6 +2,10 @@
 
 A mobile-first revision app for Chapters 1–9 of ICT600. It combines quick recall, fill-in-the-blank, ordering, explanation and coding activities. Objective items are marked automatically; subjective and coding responses use a verified model answer and marking checklist.
 
+**Live site:** <https://ilmu-repo.github.io/ict600-revision-hub/>
+
+**Repository:** <https://github.com/ilmu-repo/ict600-revision-hub>
+
 ## Student features
 
 - Four review styles: Lecture wrap-up, Quick recall, Guided practice and Full challenge
@@ -24,7 +28,7 @@ The included workflow tests and publishes the `site` folder whenever the `main` 
 3. Under **Build and deployment**, choose **GitHub Actions**.
 4. Open the **Actions** tab and wait for “Deploy ICT600 Revision Hub” to finish.
 
-The live address will normally be `https://YOUR-USERNAME.github.io/REPOSITORY-NAME/`.
+The published address for this project is <https://ilmu-repo.github.io/ict600-revision-hub/>.
 
 ## Maintain the activities
 

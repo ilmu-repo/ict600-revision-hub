@@ -9,7 +9,7 @@
 
 ## Use it after GitHub publishing
 
-Open the GitHub Pages address on any phone or computer. On a phone, use the browser menu and choose **Add to Home Screen** or **Install app**. After the first successful visit, the core activities remain available offline.
+Open <https://ilmu-repo.github.io/ict600-revision-hub/> on any phone or computer. On a phone, use the browser menu and choose **Add to Home Screen** or **Install app**. After the first successful visit, the core activities remain available offline.
 
 ## Suggested end-of-lecture routine
 
