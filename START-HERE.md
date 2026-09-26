@@ -19,6 +19,14 @@ Open <https://ilmu-repo.github.io/ict600-revision-hub/> on any phone or computer
 4. Ask students to commit to subjective or coding answers before revealing the model.
 5. Discuss common review items, then let students retry them.
 
+## Use the past-paper library
+
+1. From the home page, choose **Browse past papers**.
+2. Open the question and attempt it before looking at the answer.
+3. Expand **Reveal corrected scheme** only when ready to review.
+4. Accept equivalent correct wording or code when it satisfies the stated requirements.
+5. Use **Download complete pack** to keep all questions, schemes and guidance offline.
+
 ## Marking principle
 
 Objective items are automatically marked. Explanations and code are not judged by brittle exact-word matching. Students compare their attempt with a model answer and checklist, then choose **Got it**, **Almost**, or **Review**. Equivalent correct wording and alternative valid coding solutions are accepted.

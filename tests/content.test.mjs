@@ -43,3 +43,15 @@ test("manifest is valid and includes phone icons", () => {
   assert.equal(manifest.display, "standalone");
   assert.deepEqual(manifest.icons.map((icon) => icon.sizes), ["192x192", "512x512"]);
 });
+
+test("exam library contains eleven complete and valid question/scheme pairs", () => {
+  const examPage = fs.readFileSync(path.join(root, "site/exams.html"), "utf8");
+  assert.equal((examPage.match(/data-exam-card/g) || []).length, 11);
+
+  const linkedResources = [...examPage.matchAll(/href="(resources\/[^\"]+\.(?:pdf|docx))"/g)].map((match) => match[1]);
+  assert.equal(linkedResources.length, 22);
+  assert.equal(new Set(linkedResources).size, 22);
+  linkedResources.forEach((resource) => {
+    assert.ok(fs.existsSync(path.join(root, "site", resource)), `Missing exam resource: ${resource}`);
+  });
+});

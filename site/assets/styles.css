@@ -59,7 +59,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px
 .shell { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; padding: 2rem 0 5rem; }
 .shell.narrow { width: min(780px, calc(100% - 2rem)); }
 .view[hidden] { display: none !important; }
-.intro-panel, .how-panel, .question-card, .result-card {
+.intro-panel, .how-panel, .question-card, .result-card, .resource-promo, .exam-intro, .download-panel {
   border: 1px solid rgba(145, 164, 188, .17);
   border-radius: var(--radius);
   background: linear-gradient(150deg, rgba(16,31,50,.92), rgba(8,18,31,.92));
@@ -110,6 +110,41 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .how-panel li::before { content: counter(steps); position: absolute; left: 0; display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid rgba(56,189,248,.4); border-radius: 50%; color: var(--cyan); font-weight: 800; }
 .how-panel strong, .how-panel span { display: block; }
 .how-panel span { color: var(--muted); font-size: .9rem; }
+
+.resource-promo, .download-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: 3rem;
+  padding: clamp(1.3rem, 4vw, 2.4rem);
+}
+.resource-promo > div, .download-panel > div { max-width: 760px; }
+.resource-promo p:not(.eyebrow), .download-panel p { margin-bottom: 0; color: var(--muted); }
+.button { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+
+.exam-intro { display: grid; gap: 1.5rem; padding: clamp(1.4rem, 4vw, 3rem); }
+.exam-intro h1 { margin: .2rem 0 .75rem; font-size: clamp(2rem, 7vw, 4rem); line-height: 1.03; letter-spacing: -.04em; text-wrap: balance; }
+.exam-intro p:not(.eyebrow) { max-width: 800px; margin: 0; color: #b3c4d7; }
+.exam-stats { display: flex; align-items: baseline; gap: .7rem; }
+.exam-stats strong { color: #a9e7ff; font-size: clamp(2.5rem, 10vw, 5rem); line-height: 1; }
+.exam-stats span { max-width: 12rem; color: var(--muted); line-height: 1.2; }
+.reference-note { display: flex; flex-direction: column; gap: .3rem; margin-top: 1rem; padding: 1rem 1.2rem; border: 1px solid rgba(251,191,36,.3); border-radius: 14px; background: rgba(251,191,36,.07); }
+.reference-note strong { color: #ffd66d; }
+.reference-note span { color: #c5d2df; }
+.exam-grid { display: grid; gap: 1rem; }
+.exam-card { display: flex; flex-direction: column; justify-content: space-between; gap: 1.25rem; min-height: 285px; padding: 1.25rem; border: 1px solid var(--line); border-top: 3px solid var(--cyan); border-radius: 18px; background: rgba(11,22,37,.82); }
+.exam-card h3 { margin: .5rem 0; font-size: 1.25rem; }
+.exam-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+.exam-kind { color: var(--cyan); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.exam-actions { display: grid; gap: .7rem; }
+.exam-actions details { border: 1px solid #29445f; border-radius: 12px; background: #101f32; }
+.exam-actions summary { padding: .72rem 1rem; color: #c5d6e8; font-weight: 800; cursor: pointer; }
+.exam-actions details[open] { padding-bottom: .7rem; }
+.exam-actions details[open] summary { margin-bottom: .7rem; border-bottom: 1px solid #29445f; }
+.exam-actions details .button { margin-inline: .7rem; }
+.download-panel { margin-bottom: 1rem; }
 
 .session-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .session-position { flex: 1; color: var(--muted); font-size: .8rem; text-align: right; }
@@ -210,16 +245,19 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
   .mode-grid { grid-template-columns: repeat(2, 1fr); }
   .chapter-grid { grid-template-columns: repeat(2, 1fr); }
   .result-metrics { grid-template-columns: repeat(3, 1fr); }
+  .exam-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 860px) {
   .topbar { padding-inline: max(2rem, calc((100vw - 1180px) / 2)); }
   .shell { padding-top: 3rem; }
   .intro-panel { grid-template-columns: 1fr auto; align-items: end; }
+  .exam-intro { grid-template-columns: 1fr auto; align-items: end; }
   .mode-grid { grid-template-columns: repeat(4, 1fr); }
   .chapter-grid { grid-template-columns: repeat(3, 1fr); }
   .how-panel { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2rem; }
   .how-panel ol { grid-template-columns: repeat(3, 1fr); margin: 0; }
+  .exam-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
