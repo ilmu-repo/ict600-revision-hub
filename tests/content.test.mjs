@@ -32,7 +32,7 @@ test("every activity contains the fields required by its interaction", () => {
 
 test("offline cache lists existing files", () => {
   const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
-  assert.match(serviceWorker, /ict600-revision-v3/);
+  assert.match(serviceWorker, /ict600-revision-v4/);
   const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
   assert.ok(match);
   const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
@@ -43,6 +43,14 @@ test("manifest is valid and includes phone icons", () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "site/manifest.webmanifest"), "utf8"));
   assert.equal(manifest.display, "standalone");
   assert.deepEqual(manifest.icons.map((icon) => icon.sizes), ["192x192", "512x512"]);
+});
+
+test("dashboard explains shared mastery and provides session resume controls", () => {
+  const home = fs.readFileSync(path.join(root, "site/index.html"), "utf8");
+  assert.match(home, /One shared question pool/i);
+  assert.match(home, /Chapter mastery is shared across all review styles/i);
+  assert.match(home, /id="resumeSession"/);
+  assert.match(home, /id="restartSession"/);
 });
 
 test("exam library contains eleven complete and valid question/scheme pairs", () => {

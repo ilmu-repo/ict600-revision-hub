@@ -37,7 +37,7 @@
         </div>
         <div class="overall-progress" aria-live="polite">
           <span id="masteryNumber">0</span>
-          <small>activities mastered</small>
+          <small>unique activities mastered</small>
         </div>
       </div>
 
@@ -46,18 +46,31 @@
           <div><p class="eyebrow">Step 1</p><h2 id="modeTitle">Choose a review style</h2></div>
           <p id="modeDescription" class="muted">A balanced 8–12 minute recap for the end of class.</p>
         </div>
+        <p class="shared-pool-note"><strong>One shared question pool:</strong> every style reuses the chapter’s six activities. The style changes the selection and order, while chapter mastery remains shared.</p>
         <div id="modePicker" class="mode-grid" role="radiogroup" aria-label="Review style">
-          <button class="mode-card selected" data-mode="wrap" role="radio" aria-checked="true" type="button"><span>Lecture wrap-up</span><small>All 6 activities · 8–12 min</small></button>
-          <button class="mode-card" data-mode="quick" role="radio" aria-checked="false" type="button"><span>Quick recall</span><small>Objective questions · 3–5 min</small></button>
-          <button class="mode-card" data-mode="guided" role="radio" aria-checked="false" type="button"><span>Guided practice</span><small>Explain and code · 6–10 min</small></button>
-          <button class="mode-card" data-mode="challenge" role="radio" aria-checked="false" type="button"><span>Full challenge</span><small>All activities · random order</small></button>
+          <button class="mode-card selected" data-mode="wrap" role="radio" aria-checked="true" type="button"><span>Lecture wrap-up</span><small>Same pool · all 6 in chapter order</small></button>
+          <button class="mode-card" data-mode="quick" role="radio" aria-checked="false" type="button"><span>Quick recall</span><small>Same pool · objective subset</small></button>
+          <button class="mode-card" data-mode="guided" role="radio" aria-checked="false" type="button"><span>Guided practice</span><small>Same pool · explain and code</small></button>
+          <button class="mode-card" data-mode="challenge" role="radio" aria-checked="false" type="button"><span>Full challenge</span><small>Same pool · all 6 shuffled</small></button>
+        </div>
+      </section>
+
+      <section id="resumePanel" class="resume-panel" aria-labelledby="resumeTitle" hidden>
+        <div>
+          <p class="eyebrow">Unfinished review</p>
+          <h2 id="resumeTitle">Continue where you stopped</h2>
+          <p id="resumeDescription"></p>
+        </div>
+        <div class="resume-actions">
+          <button id="resumeSession" class="button primary" type="button">Resume session</button>
+          <button id="restartSession" class="button secondary" type="button">Start this session again</button>
         </div>
       </section>
 
       <section aria-labelledby="chapterTitle">
         <div class="section-heading">
           <div><p class="eyebrow">Step 2</p><h2 id="chapterTitle">Select today’s chapter</h2></div>
-          <p class="muted">Progress stays on this device.</p>
+          <p class="muted">Chapter mastery is shared across all review styles and stays on this device.</p>
         </div>
         <div id="chapterGrid" class="chapter-grid"></div>
       </section>

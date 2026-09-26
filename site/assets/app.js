@@ -7,11 +7,12 @@
 
   const STORAGE_KEY = "ict600.revision.v1";
   const modeCopy = {
-    wrap: "A balanced 8–12 minute recap for the end of class.",
-    quick: "Fast, automatically marked recall for the last few minutes of class.",
-    guided: "Write an explanation or solution, then mark it with a verified checklist.",
-    challenge: "The complete chapter set in a fresh random order."
+    wrap: "All six shared chapter activities in their teaching order.",
+    quick: "A short, automatically marked subset from the same chapter pool.",
+    guided: "A warm-up plus explanation and coding activities from the same pool.",
+    challenge: "All six shared chapter activities in a fresh random order."
   };
+  const modeLabels = { wrap: "Lecture wrap-up", quick: "Quick recall", guided: "Guided practice", challenge: "Full challenge", retry: "Review items" };
   const typeLabels = { mcq: "One answer", multi: "Select all", fill: "Fill the blank", order: "Put in order", short: "Explain", code: "Coding" };
 
   const $ = (selector) => document.querySelector(selector);
@@ -19,6 +20,7 @@
     dashboard: $("#dashboard"), session: $("#sessionView"), result: $("#resultView"),
     chapterGrid: $("#chapterGrid"), modePicker: $("#modePicker"), modeDescription: $("#modeDescription"),
     mastery: $("#masteryNumber"), connection: $("#connectionBadge"), install: $("#installButton"),
+    resumePanel: $("#resumePanel"), resumeDescription: $("#resumeDescription"),
     sessionCounter: $("#sessionCounter"), sessionProgress: $("#sessionProgress"),
     questionChapter: $("#questionChapter"), questionType: $("#questionType"), questionDifficulty: $("#questionDifficulty"),
     sessionTitle: $("#sessionTitle"), answerForm: $("#answerForm"), feedback: $("#feedback"), actions: $("#questionActions"),
@@ -34,9 +36,11 @@
   function loadProgress() {
     try {
       const value = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return value && Array.isArray(value.history) && Array.isArray(value.missed) ? value : { history: [], missed: [] };
+      return value && Array.isArray(value.history) && Array.isArray(value.missed)
+        ? { history: value.history, missed: value.missed, activeSession: value.activeSession || null }
+        : { history: [], missed: [], activeSession: null };
     } catch (_) {
-      return { history: [], missed: [] };
+      return { history: [], missed: [], activeSession: null };
     }
   }
 
@@ -78,6 +82,43 @@
     saveProgress();
   }
 
+  function storedSession() {
+    const restored = engine.restoreSessionSnapshot(saved.activeSession, data.activities);
+    if (!restored && saved.activeSession) {
+      saved.activeSession = null;
+      saveProgress();
+    }
+    return restored;
+  }
+
+  function saveSessionCheckpoint(nextIndex) {
+    if (!session) return;
+    const index = Number.isInteger(nextIndex) ? nextIndex : session.index;
+    saved.activeSession = index >= session.items.length ? null : engine.createSessionSnapshot(session, index);
+    saveProgress();
+    els.sessionProgress.style.width = `${Math.min(index / session.items.length, 1) * 100}%`;
+    renderResumePanel();
+  }
+
+  function renderResumePanel() {
+    const active = storedSession();
+    els.resumePanel.hidden = !active;
+    if (!active) return;
+    const chapter = chapterById(active.chapterId);
+    els.resumeDescription.textContent = `${modeLabels[active.mode]} · Chapter ${chapter.id}: ${chapter.title} · Question ${active.index + 1} of ${active.items.length}. Your exact question order has been saved.`;
+    $("#restartSession").textContent = ["quick", "challenge"].includes(active.mode) ? "Restart with a fresh order" : "Start this session again";
+  }
+
+  function resumeStoredSession() {
+    const restored = storedSession();
+    if (!restored) return;
+    session = restored;
+    if (Object.hasOwn(modeCopy, restored.mode)) chooseMode(restored.mode);
+    history.replaceState(null, "", `#chapter=${restored.chapterId}&mode=${restored.mode}`);
+    showView("session");
+    renderQuestion();
+  }
+
   function renderDashboard() {
     const mastered = data.chapters.reduce((total, chapter) => total + engine.computeChapterStats(saved.history, chapter.id).mastered, 0);
     els.mastery.textContent = mastered;
@@ -89,9 +130,10 @@
       return `<button class="chapter-card" type="button" data-chapter="${chapter.id}" style="--chapter-accent:${chapter.accent}">
         ${missed ? `<span class="retry-chip">${missed} to review</span>` : ""}
         <div><span class="chapter-number">CHAPTER ${chapter.id}</span><h3>${escapeHtml(chapter.title)}</h3><p>${escapeHtml(chapter.summary)}</p></div>
-        <div class="chapter-progress"><div><span>${stats.mastered}/${total} mastered</span><span>${percent}%</span></div><div class="mini-track"><span style="width:${percent}%"></span></div></div>
+        <div class="chapter-progress"><div><span>${stats.mastered} of ${total} unique activities mastered</span><span>${percent}% chapter mastery</span></div><div class="mini-track"><span style="width:${percent}%"></span></div></div>
       </button>`;
     }).join("");
+    renderResumePanel();
   }
 
   function chooseMode(mode) {
@@ -104,13 +146,23 @@
     els.modeDescription.textContent = modeCopy[mode];
   }
 
-  function startSession(chapterId, mode) {
-    const items = engine.selectActivities(data.activities, chapterId, mode, saved.missed);
+  function startSession(chapterId, mode, forceNew) {
+    const active = storedSession();
+    if (active && !forceNew) {
+      if (active.chapterId === Number(chapterId) && active.mode === mode) {
+        resumeStoredSession();
+        return;
+      }
+      const replace = window.confirm(`You have an unfinished ${modeLabels[active.mode]} for Chapter ${active.chapterId}. Start the selected review instead?`);
+      if (!replace) return;
+    }
+    const items = engine.selectActivities(data.activities, chapterId, mode, saved.missed, Math.random, saved.history);
     if (!items.length) {
       window.alert("There are no review items waiting for this chapter. Try the lecture wrap-up instead.");
       return;
     }
-    session = { chapterId: Number(chapterId), mode, items, index: 0, outcomes: [], response: null, checked: false };
+    session = { chapterId: Number(chapterId), mode, items, index: 0, outcomes: [], response: null, checked: false, startedAt: new Date().toISOString() };
+    saveSessionCheckpoint(0);
     history.replaceState(null, "", `#chapter=${chapterId}&mode=${mode}`);
     showView("session");
     renderQuestion();
@@ -248,6 +300,7 @@
     session.response = response;
     session.outcomes.push({ id: activity.id, correct: score.correct, prompt: activity.prompt });
     recordOutcome(activity, { correct: score.correct });
+    saveSessionCheckpoint(session.index + 1);
     els.feedback.hidden = false;
     els.feedback.className = `feedback ${score.correct ? "correct" : "incorrect"}`;
     els.feedback.innerHTML = `<h2>${score.correct ? "Correct" : "Review this one"}</h2>${score.correct ? "" : `<p><strong>Expected:</strong> ${escapeHtml(correctAnswerText(activity))}</p>`}<p>${escapeHtml(activity.explanation)}</p>`;
@@ -287,6 +340,7 @@
   function rateGuided(activity, rating) {
     session.outcomes.push({ id: activity.id, rating, prompt: activity.prompt });
     recordOutcome(activity, { rating });
+    saveSessionCheckpoint(session.index + 1);
     els.actions.innerHTML = nextButtonMarkup();
     bindNext();
   }
@@ -309,6 +363,8 @@
     const autoCorrect = automatic.filter((item) => item.correct).length;
     const confident = guided.filter((item) => item.rating === 2).length;
     const review = session.outcomes.filter((item) => item.correct === false || item.rating < 2);
+    saved.activeSession = null;
+    saveProgress();
     els.sessionProgress.style.width = "100%";
     els.resultTitle.textContent = review.length ? "Progress made." : "Chapter cleared.";
     els.resultSummary.textContent = review.length
@@ -363,6 +419,11 @@
     const card = event.target.closest("[data-chapter]");
     if (card) startSession(Number(card.dataset.chapter), selectedMode);
   });
+  $("#resumeSession").addEventListener("click", resumeStoredSession);
+  $("#restartSession").addEventListener("click", () => {
+    const active = storedSession();
+    if (active) startSession(active.chapterId, active.mode, true);
+  });
   $("#exitSession").addEventListener("click", returnHome);
   $("#backHome").addEventListener("click", returnHome);
   els.retry.addEventListener("click", () => startSession(session.chapterId, "retry"));
@@ -376,7 +437,7 @@
   $("#exportProgress").addEventListener("click", exportProgress);
   $("#resetProgress").addEventListener("click", () => {
     if (!window.confirm("Reset all ICT600 progress on this device?")) return;
-    saved = { history: [], missed: [] };
+    saved = { history: [], missed: [], activeSession: null };
     saveProgress();
     renderDashboard();
     els.settings.close();

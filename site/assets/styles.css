@@ -94,11 +94,19 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .mode-card.selected { border-color: var(--cyan); background: rgba(56, 189, 248, .1); box-shadow: inset 0 0 0 1px rgba(56,189,248,.2); }
 .mode-card span, .chapter-card h3 { display: block; margin: 0; font-weight: 800; font-size: 1rem; }
 .mode-card small, .chapter-card p { display: block; margin: .25rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.35; }
+.shared-pool-note { margin: -0.2rem 0 1rem; padding: .8rem 1rem; border: 1px solid rgba(56,189,248,.24); border-radius: 12px; background: rgba(56,189,248,.06); color: #b9cada; font-size: .86rem; }
+.shared-pool-note strong { color: #9ee5ff; }
+.resume-panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: 2rem; padding: 1.2rem; border: 1px solid rgba(52,211,153,.38); border-radius: 18px; background: linear-gradient(140deg, rgba(52,211,153,.09), rgba(11,22,37,.9)); }
+.resume-panel[hidden] { display: none; }
+.resume-panel h2 { margin-top: .2rem; }
+.resume-panel p:not(.eyebrow) { margin: .45rem 0 0; color: #b9cada; }
+.resume-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
 .chapter-card { min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; border-top: 3px solid var(--chapter-accent); }
 .chapter-number { color: var(--chapter-accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .75rem; font-weight: 800; letter-spacing: .1em; }
 .chapter-card h3 { margin-top: .55rem; font-size: 1.15rem; }
 .chapter-progress { margin-top: 1.2rem; }
-.chapter-progress > div { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .75rem; }
+.chapter-progress > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; color: var(--muted); font-size: .75rem; }
+.chapter-progress > div span:last-child { color: #a9e7ff; }
 .mini-track, .progress-track { overflow: hidden; background: #17283c; border-radius: 999px; }
 .mini-track { height: 5px; margin-top: .5rem; }
 .mini-track span, .progress-track span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--cyan), var(--mint)); border-radius: inherit; transition: width .25s ease; }
