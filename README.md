@@ -15,8 +15,8 @@ A mobile-first revision app for Chapters 1–9 of ICT600. It combines quick reca
 - Installable on a phone and available offline after the first visit
 - Shareable direct link for each chapter
 - Past-paper library with seven final examinations and four Test 1 sessions
-- Corrected student schemes hidden behind a deliberate reveal step
-- Downloadable complete exam-reference pack
+- Corrected student schemes withheld while their controlled review is in progress
+- Complete exam-reference pack prepared for release after scheme approval
 
 ## Run locally
 
@@ -37,7 +37,7 @@ The published address for this project is <https://ilmu-repo.github.io/ict600-re
 
 Question content is in `site/data/questions.js`. Every activity has a unique ID, chapter, type, prompt, answer/model, explanation/checklist and source note. Keep six activities per chapter for the standard lecture wrap-up. Run `npm test` after changing scoring logic.
 
-Past-paper files are in `site/resources/exams`. The student-facing index is `site/exams.html`; keep the question and corrected scheme as a matched pair when adding a session.
+Past-paper files are in `site/resources/exams`. The student-facing index is `site/exams.html`; keep the question and corrected scheme as a matched pair when adding a session, but do not expose scheme or pack links until the publication gate passes.
 
 ## Privacy
 

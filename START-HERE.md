@@ -23,9 +23,9 @@ Open <https://ilmu-repo.github.io/ict600-revision-hub/> on any phone or computer
 
 1. From the home page, choose **Browse past papers**.
 2. Open the question and attempt it before looking at the answer.
-3. Expand **Reveal corrected scheme** only when ready to review.
+3. Corrected schemes are temporarily hidden while their final controlled review is completed.
 4. Accept equivalent correct wording or code when it satisfies the stated requirements.
-5. Use **Download complete pack** to keep all questions, schemes and guidance offline.
+5. The complete downloadable pack will return after the scheme review is approved.
 
 ## Marking principle
 

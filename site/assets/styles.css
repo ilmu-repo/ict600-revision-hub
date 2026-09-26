@@ -152,6 +152,21 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .exam-actions details[open] { padding-bottom: .7rem; }
 .exam-actions details[open] summary { margin-bottom: .7rem; border-bottom: 1px solid #29445f; }
 .exam-actions details .button { margin-inline: .7rem; }
+.scheme-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: .7rem 1rem;
+  border: 1px solid #36516c;
+  border-radius: 12px;
+  background: #101f32;
+  color: #b8c8d9;
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .025em;
+  text-align: center;
+}
 .download-panel { margin-bottom: 1rem; }
 
 .session-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
