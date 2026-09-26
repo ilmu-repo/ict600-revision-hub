@@ -1,6 +1,7 @@
 (function () {
   "use strict";
 
+  const RELEASE = "10";
   const STORAGE_KEY = "ict600.flashcards.v1";
   const data = window.ICT600_DATA;
   const flashData = window.ICT600_FLASHCARDS;
@@ -81,10 +82,10 @@
   }
 
   function syncUrl() {
-    const next = new URLSearchParams({ chapter: state.chapter, category: state.category });
+    const next = new URLSearchParams({ release: RELEASE, chapter: state.chapter, category: state.category });
     if (state.weakOnly) next.set("weak", "1");
     history.replaceState(null, "", `?${next}`);
-    elements.exitFocus.href = `flashcards.html#chapter=${state.chapter}`;
+    elements.exitFocus.href = `flashcards.html?release=${RELEASE}#chapter=${state.chapter}`;
   }
 
   function buildDeck({ shuffle = false, restore = false } = {}) {

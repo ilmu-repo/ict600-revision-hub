@@ -235,6 +235,7 @@ Store progress locally by default for a privacy-friendly classroom tool. Explain
 - Respect reduced-motion preferences.
 - Keep wording concise enough for a phone screen.
 - Cache the application shell and required data for offline use after the first successful visit.
+- Bind scripts, styles and data files to a release identifier. Fetch HTML navigation from the network first, fall back to offline copies, and retain a small number of recent release caches so an open older page can still load its matching assets.
 - Keep question/answer assets out of public navigation until their release gate passes; remember that hiding a link is not access control if the file is still published.
 
 ## 11. Validation and release gates
@@ -273,6 +274,7 @@ Run these checks before every publication:
 
 - Keep editable sources, generated outputs and published files in clearly separated locations.
 - Increase the site data/cache version whenever required offline files change.
+- Keep the HTML asset release token, service-worker release and pre-cache list on the same version; automated tests should fail when they drift.
 - Run tests before committing.
 - Use a descriptive commit message and confirm the deployment result.
 - Create a student package only from approved current outputs.

@@ -34,11 +34,27 @@ test("every activity contains the fields required by its interaction", () => {
 
 test("offline cache lists existing files", () => {
   const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
-  assert.match(serviceWorker, /ict600-revision-v9/);
+  assert.match(serviceWorker, /const RELEASE = "10"/);
   const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
   assert.ok(match);
-  const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
+  const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1].split("?")[0]).filter(Boolean);
   files.forEach((file) => assert.ok(fs.existsSync(path.join(root, "site", file)), `Missing cached file: ${file}`));
+});
+
+test("release cache prevents mixed HTML and script versions", () => {
+  const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
+  assert.match(serviceWorker, /async function networkFirst/);
+  assert.match(serviceWorker, /request\.mode === "navigate"[\s\S]*\? networkFirst\(request\)/);
+  assert.match(serviceWorker, /const RETAIN_RELEASES = 3/);
+  assert.match(serviceWorker, /name\.startsWith\(CACHE_PREFIX\)/);
+  assert.doesNotMatch(serviceWorker, /cached\s*\|\|\s*fetch\(event\.request\)/);
+
+  ["index.html", "exams.html", "flashcards.html", "flashcard-study.html"].forEach((file) => {
+    const html = fs.readFileSync(path.join(root, "site", file), "utf8");
+    const shellReferences = [...html.matchAll(/(?:src|href)="((?:assets|data)\/[^"?]+|manifest\.webmanifest)([^"]*)"/g)];
+    assert.ok(shellReferences.length > 0, `${file} should load release-bound shell files`);
+    shellReferences.forEach((reference) => assert.match(reference[2], /\?release=10/, `Unversioned shell file in ${file}: ${reference[1]}`));
+  });
 });
 
 test("manifest is valid and includes phone icons", () => {
@@ -53,7 +69,7 @@ test("dashboard explains shared mastery and provides session resume controls", (
   assert.match(home, /Chapter mastery is shared across all review styles/i);
   assert.match(home, /id="resumeSession"/);
   assert.match(home, /id="restartSession"/);
-  assert.match(home, /href="flashcards\.html"/);
+  assert.match(home, /href="flashcards\.html\?release=10"/);
 });
 
 test("flashcard bank has 25 varied, traceable cards for every chapter", () => {
@@ -79,7 +95,7 @@ test("flashcard setup opens a separate distraction-free study screen", () => {
   ["flashChapterGrid", "flashCategoryFilters", "startFocusedStudy", "reviewWeak"].forEach((id) => {
     assert.match(setupPage, new RegExp(`id="${id}"`));
   });
-  assert.match(setupPage, /href="flashcard-study\.html\?chapter=1"/);
+  assert.match(setupPage, /href="flashcard-study\.html\?release=10&amp;chapter=1"/);
   assert.match(setupPage, /assets\/flashcard-setup\.js/);
   assert.doesNotMatch(setupPage, /id="flashCard"/);
   ["flashCard", "flipCard", "ratingActions", "deckCounter", "exitFocus"].forEach((id) => {

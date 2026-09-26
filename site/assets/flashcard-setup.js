@@ -1,6 +1,7 @@
 (function () {
   "use strict";
 
+  const RELEASE = "10";
   const STORAGE_KEY = "ict600.flashcards.v1";
   const data = window.ICT600_DATA;
   const flashData = window.ICT600_FLASHCARDS;
@@ -124,7 +125,7 @@
       ratings: state.ratings,
       weakOnly: state.weakOnly
     });
-    const params = new URLSearchParams({ chapter: state.chapter, category: state.category });
+    const params = new URLSearchParams({ release: RELEASE, chapter: state.chapter, category: state.category });
     if (state.weakOnly) params.set("weak", "1");
     if (state.shuffle) params.set("shuffle", "1");
     elements.launchChapter.textContent = `Chapter ${state.chapter}: ${chapterName(state.chapter)}`;

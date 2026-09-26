@@ -14,6 +14,7 @@ A mobile-first revision app for Chapters 1–9 of ICT600. It combines quick reca
 - Dark, high-contrast coding workspace
 - Separate local trackers for activity mastery and flashcard memory, plus targeted retry modes
 - Installable on a phone and available offline after the first visit
+- Release-safe offline updates that prevent old pages from loading incompatible new scripts
 - Shareable direct link for each chapter
 - Past-paper library with seven final examinations and four Test 1 sessions
 - Corrected student schemes withheld while their controlled review is in progress
