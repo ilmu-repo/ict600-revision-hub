@@ -43,6 +43,15 @@
     index: 0,
     flipped: false
   };
+  let isFlipping = false;
+  let flipTimers = [];
+
+  function clearFlipAnimation() {
+    flipTimers.forEach((timer) => clearTimeout(timer));
+    flipTimers = [];
+    isFlipping = false;
+    elements.flashCard.classList.remove("flip-out-forward", "flip-in-forward", "flip-out-backward", "flip-in-backward");
+  }
 
   function save() {
     const session = {
@@ -73,6 +82,7 @@
   }
 
   function rebuildDeck({ shuffle = false, restore = false } = {}) {
+    clearFlipAnimation();
     let cards = selectionCards();
     if (shuffle) cards = engine.shuffle(cards);
     if (restore && stored.session && stored.session.chapter === state.chapter && stored.session.category === state.category && Boolean(stored.session.weakOnly) === state.weakOnly) {
@@ -222,13 +232,28 @@
   }
 
   function flip() {
-    if (!state.deck.length) return;
-    state.flipped = !state.flipped;
-    renderCard();
+    if (!state.deck.length || isFlipping) return;
+    const nextFlipped = !state.flipped;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      state.flipped = nextFlipped;
+      renderCard();
+      return;
+    }
+
+    isFlipping = true;
+    elements.flashCard.classList.add(nextFlipped ? "flip-out-forward" : "flip-out-backward");
+    flipTimers.push(setTimeout(() => {
+      elements.flashCard.classList.remove("flip-out-forward", "flip-out-backward");
+      state.flipped = nextFlipped;
+      renderCard();
+      elements.flashCard.classList.add(nextFlipped ? "flip-in-forward" : "flip-in-backward");
+    }, 180));
+    flipTimers.push(setTimeout(() => clearFlipAnimation(), 400));
   }
 
   function move(offset) {
-    if (!state.deck.length) return;
+    if (!state.deck.length || isFlipping) return;
     state.index = (state.index + offset + state.deck.length) % state.deck.length;
     state.flipped = false;
     renderCard();
@@ -236,7 +261,7 @@
 
   function rate(status) {
     const card = state.deck[state.index];
-    if (!card || !state.flipped) return;
+    if (!card || !state.flipped || isFlipping) return;
     state.ratings = engine.rateCard(state.ratings, card.id, status);
     if (state.weakOnly && status === "remembered") {
       state.deck.splice(state.index, 1);
