@@ -1,4 +1,4 @@
-const CACHE = "ict600-revision-v6";
+const CACHE = "ict600-revision-v7";
 const CORE = [
   "./",
   "./index.html",
