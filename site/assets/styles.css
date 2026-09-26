@@ -229,6 +229,7 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .button.danger { background: rgba(251,113,133,.08); border-color: rgba(251,113,133,.45); color: #ff9caf; }
 .button.compact { min-height: 40px; padding: .5rem .75rem; font-size: .85rem; }
 .button:disabled { opacity: .45; cursor: not-allowed; }
+.button.disabled { opacity: .45; pointer-events: none; }
 .icon-button { min-width: 42px; padding: .45rem; font-size: 1.3rem; }
 .feedback { margin-top: 1.4rem; padding: 1rem; border-left: 4px solid var(--cyan); border-radius: 8px 14px 14px 8px; background: rgba(56,189,248,.07); }
 .feedback.correct { border-left-color: var(--mint); background: rgba(52,211,153,.07); }
@@ -306,6 +307,10 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .filter-chip:disabled { opacity: .35; cursor: not-allowed; }
 .flash-toolbar { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
 .flash-toolbar .active { border-color: var(--amber); background: rgba(251,191,36,.09); color: #ffe08a; }
+.flash-launch { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 2rem; margin-top: 1rem; padding: clamp(1.2rem, 4vw, 2rem); border: 1px solid rgba(52,211,153,.3); border-radius: var(--radius); background: radial-gradient(circle at 90% 10%, rgba(52,211,153,.12), transparent 16rem), linear-gradient(150deg, rgba(16,31,50,.94), rgba(8,18,31,.94)); box-shadow: var(--shadow); }
+.flash-launch > div { max-width: 760px; }
+.flash-launch h2 { margin-top: .25rem; }
+.flash-launch p:not(.eyebrow) { margin-bottom: 0; color: var(--muted); }
 
 .flash-study { scroll-margin-top: 85px; margin-top: 1rem; padding: clamp(1rem, 3vw, 2rem); }
 .deck-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .8rem 2rem; }
@@ -337,7 +342,7 @@ h2 { margin: .2rem 0 0; font-size: clamp(1.3rem, 3vw, 1.8rem); line-height: 1.2;
 .flash-face { position: relative; z-index: 1; display: grid; align-content: center; min-height: 305px; padding: clamp(1.4rem, 5vw, 3rem); }
 .flash-face[hidden] { display: none !important; }
 .flash-prompt-label { margin: 0 0 .7rem; color: var(--card-accent); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
-.flash-front h3 { max-width: 850px; margin: 0; font-size: clamp(1.5rem, 5vw, 2.6rem); line-height: 1.2; letter-spacing: -.025em; text-wrap: balance; }
+.flash-front h3, .flash-front h2 { max-width: 850px; margin: 0; font-size: clamp(1.5rem, 5vw, 2.6rem); line-height: 1.2; letter-spacing: -.025em; text-wrap: balance; }
 .flip-hint { align-self: end; margin: 2rem 0 0; color: var(--muted); font-size: .85rem; }
 .flash-answer { max-width: 900px; color: #f0f7ff; font-size: clamp(1.1rem, 3vw, 1.45rem); line-height: 1.55; white-space: pre-line; }
 .flash-example { max-width: 100%; overflow-x: auto; margin: 1.2rem 0 0; padding: 1rem; border: 1px solid #335575; border-radius: 13px; background: #02070d; color: #dff6ff; white-space: pre-wrap; font-family: "Cascadia Code", Consolas, monospace; font-size: .9rem; line-height: 1.55; tab-size: 2; }
@@ -363,6 +368,22 @@ kbd { padding: .12rem .35rem; border: 1px solid #53708b; border-bottom-width: 2p
 .deck-empty > div { display: grid; place-items: center; width: 62px; height: 62px; margin: 2rem auto 1rem; border: 1px solid rgba(52,211,153,.5); border-radius: 50%; color: var(--mint); font-size: 1.8rem; }
 .deck-empty p { max-width: 520px; margin: .5rem auto 1.3rem; color: var(--muted); }
 
+/* Distraction-free flashcard screen */
+.flashcard-focus-page { min-height: 100dvh; background: radial-gradient(circle at 50% -15%, rgba(56,189,248,.14), transparent 30rem), #050b14; }
+.focus-topbar { position: sticky; z-index: 20; top: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; min-height: 66px; padding: .65rem max(1rem, env(safe-area-inset-left)); border-bottom: 1px solid rgba(145,164,188,.16); background: rgba(5,11,20,.92); backdrop-filter: blur(18px); }
+.focus-title { min-width: 0; text-align: center; }
+.focus-title strong, .focus-title span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.focus-title strong { font-size: .9rem; }
+.focus-title span { color: var(--muted); font-size: .7rem; }
+.focus-shell { width: min(900px, calc(100% - 2rem)); min-height: calc(100dvh - 66px); margin: 0 auto; padding: clamp(1rem, 3vh, 2rem) 0 max(2rem, env(safe-area-inset-bottom)); }
+.focus-deck { display: flex; min-height: calc(100dvh - 110px); flex-direction: column; justify-content: center; }
+.focus-deck-head { align-items: center; }
+.focus-deck-head h1 { margin: .15rem 0 0; font-size: clamp(1.2rem, 3vw, 1.7rem); line-height: 1.2; }
+.focus-card { min-height: min(54dvh, 520px); margin-top: 1rem; }
+.focus-card .flash-face { min-height: min(46dvh, 440px); }
+.focus-primary-actions { margin-top: .8rem; }
+.focus-empty { min-height: min(54dvh, 520px); }
+
 @media (min-width: 560px) {
   .status-badge { display: inline-flex; }
   .mode-grid { grid-template-columns: repeat(2, 1fr); }
@@ -384,6 +405,7 @@ kbd { padding: .12rem .35rem; border: 1px solid #53708b; border-bottom-width: 2p
   .exam-grid { grid-template-columns: repeat(3, 1fr); }
   .flash-intro { grid-template-columns: 1fr auto; align-items: end; }
   .flash-chapter-grid { grid-template-columns: repeat(3, 1fr); }
+  .focus-topbar { padding-inline: max(2rem, calc((100vw - 900px) / 2)); }
 }
 
 @media (max-width: 559px) {
@@ -395,6 +417,13 @@ kbd { padding: .12rem .35rem; border: 1px solid #53708b; border-bottom-width: 2p
   .flash-primary-actions .flash-flip { grid-column: 1 / -1; grid-row: 1; }
   .rating-actions > div { grid-template-columns: 1fr; }
   .keyboard-hint { display: none; }
+  .focus-topbar { grid-template-columns: auto minmax(0, 1fr) 42px; }
+  .focus-topbar .button { max-width: 118px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .focus-title strong { font-size: .78rem; }
+  .focus-shell { width: min(100% - 1rem, 900px); padding-top: .6rem; }
+  .focus-deck { min-height: calc(100dvh - 78px); }
+  .focus-card { min-height: 48dvh; }
+  .focus-card .flash-face { min-height: calc(48dvh - 56px); padding: 1.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -12,7 +12,7 @@
   <script defer src="data/questions.js"></script>
   <script defer src="data/flashcards.js"></script>
   <script defer src="assets/flashcard-engine.js"></script>
-  <script defer src="assets/flashcards.js"></script>
+  <script defer src="assets/flashcard-setup.js"></script>
 </head>
 <body class="flashcard-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -63,63 +63,18 @@
       </div>
       <div id="flashCategoryFilters" class="filter-row" role="radiogroup" aria-label="Flashcard category"></div>
       <div class="flash-toolbar">
-        <button id="shuffleDeck" class="button secondary" type="button">Shuffle this deck</button>
+        <button id="shuffleDeck" class="button secondary" type="button" aria-pressed="false">Shuffle on start</button>
         <button id="reviewWeak" class="button ghost" type="button" aria-pressed="false">Review cards not remembered</button>
       </div>
     </section>
 
-    <section id="flashStudy" class="flash-study" aria-labelledby="deckTitle">
-      <header class="deck-head">
-        <div>
-          <p id="deckKicker" class="eyebrow">Chapter 1</p>
-          <h2 id="deckTitle">Flashcard deck</h2>
-        </div>
-        <div class="deck-position" aria-live="polite">
-          <span id="deckCounter">1 of 25</span>
-          <div class="progress-track"><span id="deckProgress"></span></div>
-        </div>
-      </header>
-
-      <div id="deckEmpty" class="deck-empty" hidden>
-        <div aria-hidden="true">✓</div>
-        <h3>No review cards left in this selection.</h3>
-        <p>You remembered every matching card. Turn off the review filter to study the full deck again.</p>
-        <button id="showAllCards" class="button primary" type="button">Show all cards</button>
+    <section class="flash-launch" aria-labelledby="launchTitle">
+      <div>
+        <p class="eyebrow">Ready to focus</p>
+        <h2 id="launchTitle">Study <span id="launchChapter">Chapter 1</span> without distractions.</h2>
+        <p id="launchSummary">Your selected cards will open on a separate study screen. Progress is saved on this device.</p>
       </div>
-
-      <article id="flashCard" class="flash-card" tabindex="0" aria-label="Flashcard. Press Space or use the button to reveal the answer.">
-        <header class="flash-card-meta">
-          <span id="cardCategory" class="category-badge"></span>
-          <span id="cardChapter"></span>
-        </header>
-        <div id="cardFront" class="flash-face flash-front">
-          <p class="flash-prompt-label">Recall this</p>
-          <h3 id="cardPrompt"></h3>
-          <p class="flip-hint">Think first, then reveal the answer.</p>
-        </div>
-        <div id="cardBack" class="flash-face flash-back" hidden>
-          <p class="flash-prompt-label">Model recall</p>
-          <div id="cardAnswer" class="flash-answer"></div>
-          <pre id="cardExample" class="flash-example" hidden><code></code></pre>
-          <p id="cardSource" class="flash-source"></p>
-        </div>
-      </article>
-
-      <div class="flash-primary-actions">
-        <button id="previousCard" class="button ghost" type="button">← Previous</button>
-        <button id="flipCard" class="button primary flash-flip" type="button" aria-pressed="false">Reveal answer <kbd>Space</kbd></button>
-        <button id="nextCard" class="button ghost" type="button">Next →</button>
-      </div>
-
-      <div id="ratingActions" class="rating-actions" hidden aria-label="How well did you remember this card?">
-        <p>How did that recall feel?</p>
-        <div>
-          <button class="rating-button again" data-rating="again" type="button"><kbd>1</kbd><strong>Again</strong><span>I did not recall it</span></button>
-          <button class="rating-button learning" data-rating="learning" type="button"><kbd>2</kbd><strong>Learning</strong><span>I was partly right</span></button>
-          <button class="rating-button remembered" data-rating="remembered" type="button"><kbd>3</kbd><strong>Remembered</strong><span>I recalled it clearly</span></button>
-        </div>
-      </div>
-      <p class="keyboard-hint muted">Keyboard: Space flips · 1, 2 or 3 rates · ← and → move</p>
+      <a id="startFocusedStudy" class="button primary" href="flashcard-study.html?chapter=1">Open focused flashcards →</a>
     </section>
   </main>
 

@@ -200,12 +200,13 @@ Use colour as a consistent memory lane, for example one colour for terms and ano
 
 Recommended card behaviour:
 
-1. Show one focused prompt.
-2. Require an attempt before revealing the back.
-3. Give a concise answer and optional code/example.
-4. Let the student choose Again, Learning or Remembered.
-5. Offer a deck of cards not yet remembered.
-6. Preserve chapter, filter, order and position on the device.
+1. Keep deck selection, legends and filters on a setup page; open the active deck on a separate distraction-free study screen.
+2. Show one focused prompt.
+3. Require an attempt before revealing the back.
+4. Give a concise answer and optional code/example.
+5. Let the student choose Again, Learning or Remembered.
+6. Offer a deck of cards not yet remembered.
+7. Preserve chapter, filter, order and position on the device.
 
 Flashcard ratings are confidence signals, not examination marks.
 

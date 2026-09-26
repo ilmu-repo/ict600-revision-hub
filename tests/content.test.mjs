@@ -34,7 +34,7 @@ test("every activity contains the fields required by its interaction", () => {
 
 test("offline cache lists existing files", () => {
   const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
-  assert.match(serviceWorker, /ict600-revision-v8/);
+  assert.match(serviceWorker, /ict600-revision-v9/);
   const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
   assert.ok(match);
   const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
@@ -72,16 +72,22 @@ test("flashcard bank has 25 varied, traceable cards for every chapter", () => {
   assert.deepEqual(new Set(flashData.cards.map((card) => card.category)), validCategories);
 });
 
-test("flashcard page exposes accessible study controls and all required scripts", () => {
-  const page = fs.readFileSync(path.join(root, "site/flashcards.html"), "utf8");
+test("flashcard setup opens a separate distraction-free study screen", () => {
+  const setupPage = fs.readFileSync(path.join(root, "site/flashcards.html"), "utf8");
+  const studyPage = fs.readFileSync(path.join(root, "site/flashcard-study.html"), "utf8");
   const styles = fs.readFileSync(path.join(root, "site/assets/styles.css"), "utf8");
-  ["flashChapterGrid", "flashCategoryFilters", "flashCard", "flipCard", "ratingActions", "reviewWeak"].forEach((id) => {
-    assert.match(page, new RegExp(`id="${id}"`));
+  ["flashChapterGrid", "flashCategoryFilters", "startFocusedStudy", "reviewWeak"].forEach((id) => {
+    assert.match(setupPage, new RegExp(`id="${id}"`));
   });
-  assert.match(page, /data\/flashcards\.js/);
-  assert.match(page, /assets\/flashcard-engine\.js/);
-  assert.match(page, /assets\/flashcards\.js/);
-  assert.match(page, /meaning never depends on colour alone/i);
+  assert.match(setupPage, /href="flashcard-study\.html\?chapter=1"/);
+  assert.match(setupPage, /assets\/flashcard-setup\.js/);
+  assert.doesNotMatch(setupPage, /id="flashCard"/);
+  ["flashCard", "flipCard", "ratingActions", "deckCounter", "exitFocus"].forEach((id) => {
+    assert.match(studyPage, new RegExp(`id="${id}"`));
+  });
+  assert.match(studyPage, /assets\/flashcard-study\.js/);
+  assert.doesNotMatch(studyPage, /id="flashChapterGrid"|id="memoryLegend"|id="flashCategoryFilters"/);
+  assert.match(setupPage, /meaning never depends on colour alone/i);
   assert.match(styles, /\.flash-face\[hidden\]\s*\{\s*display:\s*none\s*!important;/);
   assert.match(styles, /@keyframes flash-flip-out-forward/);
   assert.match(styles, /prefers-reduced-motion:[^)]+\)[\s\S]*animation:\s*none\s*!important/);

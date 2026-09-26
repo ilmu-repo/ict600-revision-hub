@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Distraction-free ICT600 flashcard study screen.">
+  <title>Focused Flashcards · ICT600 Revision Hub</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="data/questions.js"></script>
+  <script defer src="data/flashcards.js"></script>
+  <script defer src="assets/flashcard-engine.js"></script>
+  <script defer src="assets/flashcard-study.js"></script>
+</head>
+<body class="flashcard-focus-page">
+  <a class="skip-link" href="#main">Skip to card</a>
+  <header class="focus-topbar">
+    <a id="exitFocus" class="button ghost compact" href="flashcards.html">← Deck setup</a>
+    <div class="focus-title">
+      <strong id="focusChapter">Chapter 1</strong>
+      <span id="focusMemoryStatus">Focused study</span>
+    </div>
+    <button id="reshuffleDeck" class="icon-button" type="button" aria-label="Shuffle the current deck" title="Shuffle current deck">↻</button>
+  </header>
+
+  <main id="main" class="focus-shell">
+    <section class="focus-deck" aria-labelledby="deckTitle">
+      <header class="deck-head focus-deck-head">
+        <div>
+          <p id="deckKicker" class="eyebrow">Focused flashcards</p>
+          <h1 id="deckTitle">Chapter deck</h1>
+        </div>
+        <div class="deck-position" aria-live="polite">
+          <span id="deckCounter">1 of 25</span>
+          <div class="progress-track"><span id="deckProgress"></span></div>
+        </div>
+      </header>
+
+      <div id="deckEmpty" class="deck-empty focus-empty" hidden>
+        <div aria-hidden="true">✓</div>
+        <h2>No review cards left.</h2>
+        <p>You remembered every card in this selection.</p>
+        <button id="showAllCards" class="button primary" type="button">Study the full selection</button>
+      </div>
+
+      <article id="flashCard" class="flash-card focus-card" tabindex="0" aria-label="Flashcard. Press Space or use the button to reveal the answer.">
+        <header class="flash-card-meta">
+          <span id="cardCategory" class="category-badge"></span>
+          <span id="cardChapter"></span>
+        </header>
+        <div id="cardFront" class="flash-face flash-front">
+          <p class="flash-prompt-label">Recall this</p>
+          <h2 id="cardPrompt"></h2>
+          <p class="flip-hint">Think first, then reveal the answer.</p>
+        </div>
+        <div id="cardBack" class="flash-face flash-back" hidden>
+          <p class="flash-prompt-label">Model recall</p>
+          <div id="cardAnswer" class="flash-answer"></div>
+          <pre id="cardExample" class="flash-example" hidden><code></code></pre>
+          <p id="cardSource" class="flash-source"></p>
+        </div>
+      </article>
+
+      <div class="flash-primary-actions focus-primary-actions">
+        <button id="previousCard" class="button ghost" type="button" aria-label="Previous card">← Previous</button>
+        <button id="flipCard" class="button primary flash-flip" type="button" aria-pressed="false">Reveal answer <kbd>Space</kbd></button>
+        <button id="nextCard" class="button ghost" type="button" aria-label="Next card">Next →</button>
+      </div>
+
+      <div id="ratingActions" class="rating-actions" hidden aria-label="How well did you remember this card?">
+        <p>How did that recall feel?</p>
+        <div>
+          <button class="rating-button again" data-rating="again" type="button"><kbd>1</kbd><strong>Again</strong><span>I did not recall it</span></button>
+          <button class="rating-button learning" data-rating="learning" type="button"><kbd>2</kbd><strong>Learning</strong><span>I was partly right</span></button>
+          <button class="rating-button remembered" data-rating="remembered" type="button"><kbd>3</kbd><strong>Remembered</strong><span>I recalled it clearly</span></button>
+        </div>
+      </div>
+      <p class="keyboard-hint muted">Space flips · 1, 2 or 3 rates · ← and → move</p>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">JavaScript is required for the flashcard study deck.</p></noscript>
+</body>
+</html>

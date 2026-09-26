@@ -23,9 +23,10 @@ Open <https://ilmu-repo.github.io/ict600-revision-hub/> on any phone or computer
 
 1. From the home page, choose **Study flashcards**.
 2. Select the chapter completed in class.
-3. Ask students to recall the answer before revealing the card.
-4. Students rate each card **Again**, **Learning** or **Remembered**.
-5. Use **Review cards not remembered** for a focused second pass.
+3. Choose any category or review filter, then select **Open focused flashcards**.
+4. On the distraction-free study screen, ask students to recall the answer before revealing the card.
+5. Students rate each card **Again**, **Learning** or **Remembered**.
+6. Use **Review cards not remembered** for a focused second pass.
 
 Flashcard memory is stored separately from activity mastery. Colour identifies the kind of memory work—such as a term, comparison or code pattern—and every colour also has a label and symbol.
 

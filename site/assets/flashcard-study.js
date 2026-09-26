@@ -8,11 +8,10 @@
   if (!data || !flashData || !engine) return;
 
   const elements = Object.fromEntries([
-    "flashRemembered", "flashLearning", "flashTotal", "memoryLegend", "flashChapterGrid",
-    "chapterProgressText", "flashCategoryFilters", "shuffleDeck", "reviewWeak", "flashStudy",
-    "deckKicker", "deckTitle", "deckCounter", "deckProgress", "deckEmpty", "showAllCards",
-    "flashCard", "cardCategory", "cardChapter", "cardFront", "cardBack", "cardPrompt",
-    "cardAnswer", "cardExample", "cardSource", "previousCard", "flipCard", "nextCard", "ratingActions"
+    "exitFocus", "focusChapter", "focusMemoryStatus", "reshuffleDeck", "deckKicker", "deckTitle",
+    "deckCounter", "deckProgress", "deckEmpty", "showAllCards", "flashCard", "cardCategory",
+    "cardChapter", "cardFront", "cardBack", "cardPrompt", "cardAnswer", "cardExample", "cardSource",
+    "previousCard", "flipCard", "nextCard", "ratingActions"
   ].map((id) => [id, document.getElementById(id)]));
 
   function readStoredState() {
@@ -27,24 +26,28 @@
     }
   }
 
+  const params = new URLSearchParams(location.search);
   const stored = readStoredState();
-  const hashChapter = Number(new URLSearchParams(location.hash.slice(1)).get("chapter"));
-  const initialChapter = data.chapters.some((chapter) => chapter.id === hashChapter)
-    ? hashChapter
-    : Number(stored.session?.chapter || 1);
-
+  const requestedChapter = Number(params.get("chapter"));
+  const chapter = data.chapters.some((item) => item.id === requestedChapter) ? requestedChapter : 1;
   const validCategories = new Set(["all", ...Object.keys(flashData.categories)]);
+  const category = validCategories.has(params.get("category")) ? params.get("category") : "all";
+  const shuffleOnStart = params.get("shuffle") === "1";
   const state = {
     ratings: stored.ratings,
-    chapter: data.chapters.some((chapter) => chapter.id === initialChapter) ? initialChapter : 1,
-    category: validCategories.has(stored.session?.category) ? stored.session.category : "all",
-    weakOnly: Boolean(stored.session?.weakOnly),
+    chapter,
+    category,
+    weakOnly: params.get("weak") === "1",
     deck: [],
     index: 0,
     flipped: false
   };
   let isFlipping = false;
   let flipTimers = [];
+
+  function chapterName() {
+    return data.chapters.find((item) => item.id === state.chapter)?.title || `Chapter ${state.chapter}`;
+  }
 
   function clearFlipAnimation() {
     flipTimers.forEach((timer) => clearTimeout(timer));
@@ -64,116 +67,56 @@
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ratings: state.ratings, session }));
     } catch {
-      // The deck remains usable when browser storage is unavailable.
+      // The focused deck remains usable when browser storage is unavailable.
     }
   }
 
-  function chapterName(id) {
-    return data.chapters.find((chapter) => chapter.id === id)?.title || `Chapter ${id}`;
-  }
-
-  function selectionCards(options = {}) {
+  function selectedCards() {
     return engine.filterCards(flashData.cards, {
       chapter: state.chapter,
       category: state.category,
       ratings: state.ratings,
-      weakOnly: options.ignoreWeak ? false : state.weakOnly
+      weakOnly: state.weakOnly
     });
   }
 
-  function rebuildDeck({ shuffle = false, restore = false } = {}) {
+  function syncUrl() {
+    const next = new URLSearchParams({ chapter: state.chapter, category: state.category });
+    if (state.weakOnly) next.set("weak", "1");
+    history.replaceState(null, "", `?${next}`);
+    elements.exitFocus.href = `flashcards.html#chapter=${state.chapter}`;
+  }
+
+  function buildDeck({ shuffle = false, restore = false } = {}) {
     clearFlipAnimation();
-    let cards = selectionCards();
+    let cards = selectedCards();
     if (shuffle) cards = engine.shuffle(cards);
     if (restore && stored.session && stored.session.chapter === state.chapter && stored.session.category === state.category && Boolean(stored.session.weakOnly) === state.weakOnly) {
       const restored = engine.restoreOrder(stored.session, cards);
       if (restored) {
         state.deck = restored.cards;
         state.index = restored.index;
-        renderAll();
+        state.flipped = false;
+        syncUrl();
+        render();
         return;
       }
     }
     state.deck = cards;
     state.index = 0;
     state.flipped = false;
-    save();
-    renderAll();
+    syncUrl();
+    render();
   }
 
-  function renderLegend() {
-    elements.memoryLegend.replaceChildren(...Object.entries(flashData.categories).map(([key, category]) => {
-      const item = document.createElement("span");
-      item.className = "memory-key-item";
-      item.style.setProperty("--key-colour", category.colour);
-      const symbol = document.createElement("b");
-      symbol.setAttribute("aria-hidden", "true");
-      symbol.textContent = category.symbol;
-      item.append(symbol, document.createTextNode(category.label));
-      item.dataset.category = key;
-      return item;
-    }));
-  }
-
-  function renderChapters() {
-    elements.flashChapterGrid.replaceChildren(...data.chapters.map((chapter) => {
-      const chapterCards = flashData.cards.filter((card) => card.chapter === chapter.id);
-      const stats = engine.getStats(chapterCards, state.ratings);
-      const percent = stats.total ? Math.round((stats.remembered / stats.total) * 100) : 0;
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `flash-chapter-button${chapter.id === state.chapter ? " selected" : ""}`;
-      button.setAttribute("role", "radio");
-      button.setAttribute("aria-checked", chapter.id === state.chapter ? "true" : "false");
-      button.innerHTML = `<span class="chapter-number">${chapter.id}</span><span><strong>${chapter.title}</strong><small>${stats.remembered}/${stats.total} remembered</small></span><span class="chapter-memory">${percent}%</span>`;
-      button.addEventListener("click", () => {
-        state.chapter = chapter.id;
-        state.category = "all";
-        state.weakOnly = false;
-        history.replaceState(null, "", `#chapter=${chapter.id}`);
-        rebuildDeck();
-        elements.flashStudy.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      return button;
-    }));
-  }
-
-  function renderCategoryFilters() {
+  function renderHeader() {
     const chapterCards = flashData.cards.filter((card) => card.chapter === state.chapter);
-    const options = [["all", { label: "All cards", symbol: "∞", colour: "#e2e8f0" }], ...Object.entries(flashData.categories)];
-    elements.flashCategoryFilters.replaceChildren(...options.map(([key, category]) => {
-      const count = key === "all" ? chapterCards.length : chapterCards.filter((card) => card.category === key).length;
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `filter-chip${state.category === key ? " selected" : ""}`;
-      button.style.setProperty("--chip-colour", category.colour);
-      button.setAttribute("role", "radio");
-      button.setAttribute("aria-checked", state.category === key ? "true" : "false");
-      button.disabled = count === 0;
-      const symbol = document.createElement("b");
-      symbol.setAttribute("aria-hidden", "true");
-      symbol.textContent = category.symbol;
-      const label = document.createElement("span");
-      label.textContent = category.label;
-      const total = document.createElement("small");
-      total.textContent = count;
-      button.append(symbol, label, total);
-      button.addEventListener("click", () => {
-        state.category = key;
-        rebuildDeck();
-      });
-      return button;
-    }));
-  }
-
-  function renderStats() {
-    const overall = engine.getStats(flashData.cards, state.ratings);
-    const chapterCards = flashData.cards.filter((card) => card.chapter === state.chapter);
-    const chapterStats = engine.getStats(chapterCards, state.ratings);
-    elements.flashRemembered.textContent = overall.remembered;
-    elements.flashLearning.textContent = overall.learning + overall.again;
-    elements.flashTotal.textContent = overall.total;
-    elements.chapterProgressText.textContent = `${chapterStats.remembered} of ${chapterStats.total} remembered in Chapter ${state.chapter}.`;
+    const stats = engine.getStats(chapterCards, state.ratings);
+    elements.focusChapter.textContent = `Chapter ${state.chapter} · ${chapterName()}`;
+    elements.focusMemoryStatus.textContent = `${stats.remembered}/${stats.total} remembered`;
+    elements.deckTitle.textContent = chapterName();
+    const categoryLabel = state.category === "all" ? "All memory lanes" : flashData.categories[state.category].label;
+    elements.deckKicker.textContent = state.weakOnly ? `${categoryLabel} · Not remembered` : categoryLabel;
   }
 
   function renderCard() {
@@ -185,11 +128,6 @@
     elements.flipCard.hidden = !hasCards;
     elements.nextCard.hidden = !hasCards;
     elements.ratingActions.hidden = !hasCards || !state.flipped;
-    elements.deckKicker.textContent = `Chapter ${state.chapter}`;
-    elements.deckTitle.textContent = chapterName(state.chapter);
-    elements.reviewWeak.setAttribute("aria-pressed", state.weakOnly ? "true" : "false");
-    elements.reviewWeak.classList.toggle("active", state.weakOnly);
-    elements.reviewWeak.textContent = state.weakOnly ? "Showing cards not remembered" : "Review cards not remembered";
 
     if (!hasCards) {
       elements.deckCounter.textContent = "Deck complete";
@@ -198,13 +136,11 @@
       return;
     }
 
-    const category = flashData.categories[card.category];
-    const progress = ((state.index + 1) / state.deck.length) * 100;
+    const categoryInfo = flashData.categories[card.category];
     elements.deckCounter.textContent = `${state.index + 1} of ${state.deck.length}`;
-    elements.deckProgress.style.width = `${progress}%`;
-    elements.flashCard.style.setProperty("--card-accent", category.colour);
-    elements.flashCard.dataset.category = card.category;
-    elements.cardCategory.textContent = `${category.symbol} ${category.label}`;
+    elements.deckProgress.style.width = `${((state.index + 1) / state.deck.length) * 100}%`;
+    elements.flashCard.style.setProperty("--card-accent", categoryInfo.colour);
+    elements.cardCategory.textContent = `${categoryInfo.symbol} ${categoryInfo.label}`;
     elements.cardChapter.textContent = `Chapter ${card.chapter}`;
     elements.cardPrompt.textContent = card.front;
     elements.cardAnswer.textContent = card.back;
@@ -224,10 +160,8 @@
     save();
   }
 
-  function renderAll() {
-    renderStats();
-    renderChapters();
-    renderCategoryFilters();
+  function render() {
+    renderHeader();
     renderCard();
   }
 
@@ -240,7 +174,6 @@
       renderCard();
       return;
     }
-
     isFlipping = true;
     elements.flashCard.classList.add(nextFlipped ? "flip-out-forward" : "flip-out-backward");
     flipTimers.push(setTimeout(() => {
@@ -270,27 +203,22 @@
       state.index = (state.index + 1) % state.deck.length;
     }
     state.flipped = false;
-    renderAll();
+    render();
   }
 
-  elements.flipCard.addEventListener("click", flip);
   elements.flashCard.addEventListener("click", flip);
+  elements.flipCard.addEventListener("click", flip);
   elements.previousCard.addEventListener("click", () => move(-1));
   elements.nextCard.addEventListener("click", () => move(1));
-  elements.shuffleDeck.addEventListener("click", () => rebuildDeck({ shuffle: true }));
-  elements.reviewWeak.addEventListener("click", () => {
-    state.weakOnly = !state.weakOnly;
-    rebuildDeck({ shuffle: state.weakOnly });
-  });
+  elements.reshuffleDeck.addEventListener("click", () => buildDeck({ shuffle: true }));
   elements.showAllCards.addEventListener("click", () => {
     state.weakOnly = false;
-    rebuildDeck();
+    buildDeck({ shuffle: true });
   });
   elements.ratingActions.addEventListener("click", (event) => {
     const button = event.target.closest("[data-rating]");
     if (button) rate(button.dataset.rating);
   });
-
   document.addEventListener("keydown", (event) => {
     if (event.target.matches("input, textarea, select") || event.target.closest("button, a")) return;
     if (event.code === "Space" || event.key === "Enter") {
@@ -303,9 +231,7 @@
     else if (event.key === "3") rate("remembered");
   });
 
-  renderLegend();
-  rebuildDeck({ restore: true });
-
+  buildDeck({ shuffle: shuffleOnStart, restore: !shuffleOnStart });
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
   }
