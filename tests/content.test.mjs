@@ -32,6 +32,7 @@ test("every activity contains the fields required by its interaction", () => {
 
 test("offline cache lists existing files", () => {
   const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
+  assert.match(serviceWorker, /ict600-revision-v3/);
   const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
   assert.ok(match);
   const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
@@ -47,6 +48,7 @@ test("manifest is valid and includes phone icons", () => {
 test("exam library contains eleven complete and valid question/scheme pairs", () => {
   const examPage = fs.readFileSync(path.join(root, "site/exams.html"), "utf8");
   assert.equal((examPage.match(/data-exam-card/g) || []).length, 11);
+  assert.match(examPage, /complete model implementations and itemised mark allocations/i);
 
   const linkedResources = [...examPage.matchAll(/href="(resources\/[^\"]+\.(?:pdf|docx))"/g)].map((match) => match[1]);
   assert.equal(linkedResources.length, 22);
