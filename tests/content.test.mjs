@@ -1,0 +1,45 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const context = { window: {} };
+vm.createContext(context);
+vm.runInContext(fs.readFileSync(path.join(root, "site/data/questions.js"), "utf8"), context);
+const data = context.window.ICT600_DATA;
+
+test("contains nine chapters and six unique activities per chapter", () => {
+  assert.equal(data.chapters.length, 9);
+  assert.equal(data.activities.length, 54);
+  assert.equal(new Set(data.activities.map((item) => item.id)).size, 54);
+  data.chapters.forEach((chapter) => assert.equal(data.activities.filter((item) => item.chapter === chapter.id).length, 6));
+});
+
+test("every activity contains the fields required by its interaction", () => {
+  const types = new Set(["mcq", "multi", "fill", "order", "short", "code"]);
+  data.activities.forEach((item) => {
+    assert.ok(item.id && item.prompt && item.source && item.difficulty);
+    assert.ok(types.has(item.type), `Unknown type for ${item.id}`);
+    if (item.type === "mcq" || item.type === "multi") assert.ok(Array.isArray(item.options) && item.options.length >= 3);
+    if (item.type === "fill") assert.ok(Array.isArray(item.answers) && item.answers.length);
+    if (item.type === "order") assert.equal(item.items.length, item.answer.length);
+    if (item.type === "short" || item.type === "code") assert.ok(item.model && item.checklist.length >= 3);
+  });
+});
+
+test("offline cache lists existing files", () => {
+  const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
+  const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
+  assert.ok(match);
+  const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
+  files.forEach((file) => assert.ok(fs.existsSync(path.join(root, "site", file)), `Missing cached file: ${file}`));
+});
+
+test("manifest is valid and includes phone icons", () => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, "site/manifest.webmanifest"), "utf8"));
+  assert.equal(manifest.display, "standalone");
+  assert.deepEqual(manifest.icons.map((icon) => icon.sizes), ["192x192", "512x512"]);
+});

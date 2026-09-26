@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Interactive, chapter-by-chapter revision for ICT600 Web Technology and Application.">
+  <title>ICT600 Revision Hub</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="data/questions.js"></script>
+  <script defer src="assets/engine.js"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ICT600 Revision Hub home">
+      <span class="brand-mark" aria-hidden="true">600</span>
+      <span><strong>ICT600</strong><small>Revision Hub</small></span>
+    </a>
+    <nav class="top-actions" aria-label="App actions">
+      <span id="connectionBadge" class="status-badge">Checking…</span>
+      <button id="installButton" class="button ghost compact" type="button" hidden>Install</button>
+      <button id="openSettings" class="icon-button" type="button" aria-label="Open progress settings">⋯</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="dashboard" class="view shell" aria-labelledby="dashboardTitle">
+      <div class="intro-panel">
+        <div>
+          <p class="eyebrow">Lecture exit ticket</p>
+          <h1 id="dashboardTitle">Turn today’s chapter into active recall.</h1>
+          <p>Choose a chapter, answer a short mix of questions, then compare subjective and coding responses against a guided marking checklist.</p>
+        </div>
+        <div class="overall-progress" aria-live="polite">
+          <span id="masteryNumber">0</span>
+          <small>activities mastered</small>
+        </div>
+      </div>
+
+      <section aria-labelledby="modeTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">Step 1</p><h2 id="modeTitle">Choose a review style</h2></div>
+          <p id="modeDescription" class="muted">A balanced 8–12 minute recap for the end of class.</p>
+        </div>
+        <div id="modePicker" class="mode-grid" role="radiogroup" aria-label="Review style">
+          <button class="mode-card selected" data-mode="wrap" role="radio" aria-checked="true" type="button"><span>Lecture wrap-up</span><small>All 6 activities · 8–12 min</small></button>
+          <button class="mode-card" data-mode="quick" role="radio" aria-checked="false" type="button"><span>Quick recall</span><small>Objective questions · 3–5 min</small></button>
+          <button class="mode-card" data-mode="guided" role="radio" aria-checked="false" type="button"><span>Guided practice</span><small>Explain and code · 6–10 min</small></button>
+          <button class="mode-card" data-mode="challenge" role="radio" aria-checked="false" type="button"><span>Full challenge</span><small>All activities · random order</small></button>
+        </div>
+      </section>
+
+      <section aria-labelledby="chapterTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">Step 2</p><h2 id="chapterTitle">Select today’s chapter</h2></div>
+          <p class="muted">Progress stays on this device.</p>
+        </div>
+        <div id="chapterGrid" class="chapter-grid"></div>
+      </section>
+
+      <section class="how-panel" aria-labelledby="howTitle">
+        <div><p class="eyebrow">Built for subjective assessment</p><h2 id="howTitle">Practice the thinking, not just the final words.</h2></div>
+        <ol>
+          <li><strong>Answer first.</strong><span>Commit to your own explanation or code.</span></li>
+          <li><strong>Reveal the model.</strong><span>Compare against a verified response and checklist.</span></li>
+          <li><strong>Rate honestly.</strong><span>Mark it Got it, Almost, or Review to shape your next session.</span></li>
+        </ol>
+      </section>
+    </section>
+
+    <section id="sessionView" class="view shell narrow" hidden aria-labelledby="sessionTitle">
+      <div class="session-top">
+        <button id="exitSession" class="button ghost compact" type="button">← Exit</button>
+        <div class="session-position"><span id="sessionCounter"></span><div class="progress-track"><span id="sessionProgress"></span></div></div>
+      </div>
+      <article id="questionCard" class="question-card">
+        <header class="question-meta"><span id="questionChapter"></span><span id="questionType"></span><span id="questionDifficulty"></span></header>
+        <h1 id="sessionTitle"></h1>
+        <form id="answerForm" novalidate></form>
+        <div id="feedback" class="feedback" hidden aria-live="polite"></div>
+        <footer id="questionActions" class="question-actions"></footer>
+      </article>
+    </section>
+
+    <section id="resultView" class="view shell narrow" hidden aria-labelledby="resultTitle">
+      <article class="result-card">
+        <div id="resultIcon" class="result-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow">Session complete</p>
+        <h1 id="resultTitle">Nice work.</h1>
+        <p id="resultSummary" class="result-summary"></p>
+        <div id="resultMetrics" class="result-metrics"></div>
+        <div id="reviewList" class="review-list"></div>
+        <div class="result-actions">
+          <button id="retryMissed" class="button primary" type="button">Retry review items</button>
+          <button id="backHome" class="button secondary" type="button">Choose another chapter</button>
+          <button id="shareResult" class="button ghost" type="button">Share this chapter</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <form method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">Your device</p><h2>Progress & offline use</h2></div><button class="icon-button" value="close" aria-label="Close">×</button></div>
+      <p>Your answers and progress are stored only in this browser. Install the app for faster access and offline revision after the first visit.</p>
+      <div class="dialog-actions">
+        <button id="exportProgress" class="button secondary" type="button">Export progress</button>
+        <button id="resetProgress" class="button danger" type="button">Reset progress</button>
+      </div>
+      <p class="tiny muted">Question set <span id="dataVersion"></span></p>
+    </form>
+  </dialog>
+
+  <noscript><p class="noscript">JavaScript is required for the interactive revision activities.</p></noscript>
+</body>
+</html>

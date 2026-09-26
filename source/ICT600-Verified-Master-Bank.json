@@ -1,0 +1,3076 @@
+{
+  "chapters": {
+    "1": "Web Technology",
+    "2": "Client-Side Web Development",
+    "3": "JavaScript",
+    "4": "Web Programming Basic",
+    "5": "Web Techniques",
+    "6": "Web Databases",
+    "7": "Framework",
+    "8": "Web Services",
+    "9": "Web Security"
+  },
+  "policy": {
+    "evidence_priority": [
+      "exact printed question and code",
+      "current ICT600 lecture notes",
+      "official marking intention and mark allocation",
+      "historical/generated scheme after correction"
+    ],
+    "equivalent_answer_policy": [
+      "Award the same marks for code with equivalent behaviour and constraints.",
+      "Do not require cosmetic agreement with the model solution.",
+      "When a method is explicitly requested, that method remains part of the assessment.",
+      "Do not silently repair or change code before tracing it.",
+      "Use safe current practice in model solutions while recognising lecture-aligned alternatives."
+    ]
+  },
+  "question_bank": [
+    {
+      "id": "C1-01",
+      "chapter": 1,
+      "chapter_title": "Web Technology",
+      "title": "Internet, intranet and extranet",
+      "marks": 6,
+      "difficulty": "Foundation",
+      "command_verb": "Define",
+      "question": "Define Internet, intranet and extranet.",
+      "model_answer": "Internet: the global network of interconnected networks. Intranet: a private organisational network using Internet standards for authorised users. Extranet: controlled access that extends selected intranet resources to authorised external parties.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Accurate Internet definition"
+        },
+        {
+          "marks": 2,
+          "criterion": "Accurate intranet definition"
+        },
+        {
+          "marks": 2,
+          "criterion": "Accurate extranet definition"
+        }
+      ],
+      "source_basis": "Adapted from May 2020 and 20252 Test 1",
+      "acceptable_alternatives": "Equivalent wording is accepted when the access scope and purpose are accurate.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C1-02",
+      "chapter": 1,
+      "chapter_title": "Web Technology",
+      "title": "Web versus Internet",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "Differentiate",
+      "question": "Differentiate the Web from the Internet and state which one provides the infrastructure for the other.",
+      "model_answer": "The Internet is the global network infrastructure. The Web is an information-sharing system of linked resources accessed over that infrastructure. The Internet provides the infrastructure for the Web.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Internet described as network infrastructure"
+        },
+        {
+          "marks": 1,
+          "criterion": "Web described as an information/resource system"
+        },
+        {
+          "marks": 1,
+          "criterion": "Relationship stated correctly"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C1-03",
+      "chapter": 1,
+      "chapter_title": "Web Technology",
+      "title": "HTTP request and response",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Explain",
+      "question": "Explain the HTTP request-response cycle when a browser retrieves a page, including one successful status code and one client-error status code.",
+      "model_answer": "The browser sends an HTTP request to the web server. The server locates or generates the resource and returns an HTTP response containing a status code, headers and usually a body. 200 means success; 404 means the requested resource was not found.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Browser request explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Server processing and response explained"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid success code with meaning"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid client-error code with meaning"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Any accurate 2xx success and 4xx client-error examples are accepted.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C1-04",
+      "chapter": 1,
+      "chapter_title": "Web Technology",
+      "title": "Browser and server roles",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Compare",
+      "question": "Compare a web browser and a web server using their role, location of execution and one example of each.",
+      "model_answer": "A browser is client software that requests resources and renders HTML/CSS while executing client-side JavaScript, for example Chrome or Firefox. A web server receives HTTP requests and returns static or generated responses, for example Apache or Nginx.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Browser role and execution context"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid browser example"
+        },
+        {
+          "marks": 2,
+          "criterion": "Server role and execution context"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid server example"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C1-05",
+      "chapter": 1,
+      "chapter_title": "Web Technology",
+      "title": "Select a web platform",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Recommend",
+      "question": "A faculty needs a site that non-programmers can update, supports role-based publishing, and can be accessed from standard browsers. Recommend an appropriate platform category and explain four relevant characteristics.",
+      "model_answer": "Recommend a content management system. Relevant characteristics include browser-based administration, reusable themes/templates, user roles and permissions, content workflow/versioning, extensions/plugins, and centralised publishing.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Content management system identified"
+        },
+        {
+          "marks": 2,
+          "criterion": "First relevant characteristic explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Second relevant characteristic explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Third relevant characteristic explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Fourth relevant characteristic explained"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Any four accurate CMS characteristics connected to the scenario are accepted. Named CMS products may be examples but do not replace the explanation.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C2-01",
+      "chapter": 2,
+      "chapter_title": "Client-Side Web Development",
+      "title": "HTML document structure",
+      "marks": 5,
+      "difficulty": "Foundation",
+      "command_verb": "Construct",
+      "question": "Write the minimum valid HTML5 structure for a page titled ICT600 that displays a level-one heading reading Web Technology.",
+      "model_answer": "A valid answer contains the HTML5 doctype, html, head, title, body and h1 elements with correct nesting and closing tags.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "HTML5 doctype"
+        },
+        {
+          "marks": 1,
+          "criterion": "html root element"
+        },
+        {
+          "marks": 1,
+          "criterion": "head and title"
+        },
+        {
+          "marks": 1,
+          "criterion": "body"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct h1 content and valid nesting"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<!doctype html>\n<html lang=\"en\">\n<head><meta charset=\"utf-8\"><title>ICT600</title></head>\n<body><h1>Web Technology</h1></body>\n</html>",
+      "code_language": "html",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C2-02",
+      "chapter": 2,
+      "chapter_title": "Client-Side Web Development",
+      "title": "Accessible linked image",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "Write",
+      "question": "Write HTML that displays uitmlogo.jpg with alternative text UiTM Logo and makes the image link to https://www.uitm.edu.my/.",
+      "model_answer": "Use a valid img element inside an anchor element. The alt attribute must describe the image.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Correct anchor and destination"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct image source"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct alternative text"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid nesting and ASCII quotation marks"
+        }
+      ],
+      "source_basis": "Corrected from May 2020 Test 1",
+      "acceptable_alternatives": "",
+      "correction_note": "The historical scheme used smart/missing quotation marks and was not valid HTML.",
+      "prompt_code": "",
+      "answer_code": "<a href=\"https://www.uitm.edu.my/\">\n  <img src=\"uitmlogo.jpg\" alt=\"UiTM Logo\">\n</a>",
+      "code_language": "html",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C2-03",
+      "chapter": 2,
+      "chapter_title": "Client-Side Web Development",
+      "title": "Internal and external CSS",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Explain",
+      "question": "Explain internal and external CSS. Give one valid code example of each and one situation where each is appropriate.",
+      "model_answer": "Internal CSS is placed in a style element in the document head and is useful for a single page. External CSS is stored in a separate .css file and linked with a link element; it is preferable for consistent styling across multiple pages.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Internal CSS definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid internal example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Appropriate internal use"
+        },
+        {
+          "marks": 1,
+          "criterion": "External CSS definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid external example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Appropriate external use"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "Use CSS comments /* ... */ when annotations are included; // is not valid CSS comment syntax.",
+      "prompt_code": "",
+      "answer_code": "<!-- Internal -->\n<style>h1 { color: navy; }</style>\n\n<!-- External -->\n<link rel=\"stylesheet\" href=\"styles.css\">",
+      "code_language": "html",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C2-04",
+      "chapter": 2,
+      "chapter_title": "Client-Side Web Development",
+      "title": "Semantic POST form",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Construct",
+      "question": "Construct an HTML form that posts to register.php and collects full name, email, programme and password. All fields are required; email and password must use suitable input types; include an associated label for every control and a submit button.",
+      "model_answer": "The form uses method=post and action=register.php, labelled controls with name attributes, required validation, correct email/password types and a submit control.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Correct form method and action"
+        },
+        {
+          "marks": 2,
+          "criterion": "Full-name control and associated label"
+        },
+        {
+          "marks": 2,
+          "criterion": "Email and password use suitable types"
+        },
+        {
+          "marks": 2,
+          "criterion": "Programme control and required/name attributes"
+        },
+        {
+          "marks": 2,
+          "criterion": "Submit button and valid structure"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "A select element or text input may collect programme. Different ids and names are accepted when internally consistent.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<form method=\"post\" action=\"register.php\">\n  <label for=\"fullName\">Full name</label>\n  <input id=\"fullName\" name=\"fullName\" required>\n  <label for=\"email\">Email</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n  <label for=\"programme\">Programme</label>\n  <input id=\"programme\" name=\"programme\" required>\n  <label for=\"password\">Password</label>\n  <input id=\"password\" name=\"password\" type=\"password\" required>\n  <button type=\"submit\">Register</button>\n</form>",
+      "code_language": "html",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C2-05",
+      "chapter": 2,
+      "chapter_title": "Client-Side Web Development",
+      "title": "Responsive page decision",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Assess",
+      "question": "A two-column desktop page becomes unreadable on a phone. Propose an eight-mark CSS-based correction that follows responsive web design principles.",
+      "model_answer": "Use a mobile-friendly viewport, flexible dimensions, a layout mechanism such as grid/flexbox, and a media query that collapses the columns. Images should not exceed their container.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Viewport requirement identified"
+        },
+        {
+          "marks": 2,
+          "criterion": "Flexible layout proposed"
+        },
+        {
+          "marks": 2,
+          "criterion": "Media query with a suitable breakpoint"
+        },
+        {
+          "marks": 1,
+          "criterion": "Columns collapse for narrow screens"
+        },
+        {
+          "marks": 1,
+          "criterion": "Responsive image rule"
+        },
+        {
+          "marks": 1,
+          "criterion": "Reasoning connected to readability"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Grid or flexbox is accepted. A different reasonable breakpoint is accepted.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n.layout { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }\nimg { max-width: 100%; height: auto; }\n@media (max-width: 700px) {\n  .layout { grid-template-columns: 1fr; }\n}\n</style>",
+      "code_language": "css",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C3-01",
+      "chapter": 3,
+      "chapter_title": "JavaScript",
+      "title": "JavaScript inclusion and loading",
+      "marks": 5,
+      "difficulty": "Foundation",
+      "command_verb": "Explain",
+      "question": "List three ways to include JavaScript in an HTML document and explain one non-blocking way to load an external script.",
+      "model_answer": "JavaScript may be inline in an event attribute, internal in a script element, or external in a .js file referenced by src. An external script in the head with defer downloads without blocking parsing and executes after the document is parsed.",
+      "rubric": [
+        {
+          "marks": 3,
+          "criterion": "Three inclusion methods"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid non-blocking external example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct defer explanation"
+        }
+      ],
+      "source_basis": "Updated from 20262 Test 1",
+      "acceptable_alternatives": "",
+      "correction_note": "Bottom-of-body placement is valid, but it is not the only modern recommendation.",
+      "prompt_code": "",
+      "answer_code": "<script src=\"app.js\" defer></script>",
+      "code_language": "html",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C3-02",
+      "chapter": 3,
+      "chapter_title": "JavaScript",
+      "title": "DOM content update",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Write",
+      "question": "Write JavaScript that reads a value from an input with id studentName and displays Welcome, followed by that name, in an element with id result when a button with id greet is clicked.",
+      "model_answer": "Retrieve the elements, register a click handler, read the input value and update the result. textContent is preferred because the output is plain text.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Input located"
+        },
+        {
+          "marks": 1,
+          "criterion": "Result located"
+        },
+        {
+          "marks": 1,
+          "criterion": "Button/event handler"
+        },
+        {
+          "marks": 1,
+          "criterion": "Value read"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct message"
+        },
+        {
+          "marks": 1,
+          "criterion": "DOM updated"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "querySelector or getElementById; function declaration, anonymous callback or arrow function; textContent or innerHTML are accepted when used safely.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "const input = document.getElementById('studentName');\nconst result = document.getElementById('result');\ndocument.getElementById('greet').addEventListener('click', () => {\n  result.textContent = `Welcome, ${input.value.trim()}`;\n});",
+      "code_language": "javascript",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C3-03",
+      "chapter": 3,
+      "chapter_title": "JavaScript",
+      "title": "Explicit-rate currency function",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Create",
+      "question": "Create a JavaScript function convertUsdToMyr(usd, rate) that returns the converted value. Using the explicitly supplied rate 1 USD = MYR 4.34, display the conversion of USD 25 to two decimal places.",
+      "model_answer": "Multiply usd by rate, return the result and format the displayed value to two decimal places. USD 25 is MYR 108.50 at the stated rate.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Function with two parameters"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct multiplication and return"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct call using 25 and 4.34"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct numeric result"
+        },
+        {
+          "marks": 1,
+          "criterion": "Two-decimal formatting"
+        },
+        {
+          "marks": 1,
+          "criterion": "Displayed with a clear unit"
+        }
+      ],
+      "source_basis": "Corrected from May 2020 Test 1",
+      "acceptable_alternatives": "",
+      "correction_note": "The historical question omitted the exchange rate while its scheme assumed one.",
+      "prompt_code": "",
+      "answer_code": "function convertUsdToMyr(usd, rate) {\n  return usd * rate;\n}\nconst converted = convertUsdToMyr(25, 4.34);\ndocument.getElementById('result').textContent = `MYR ${converted.toFixed(2)}`;",
+      "code_language": "javascript",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C3-04",
+      "chapter": 3,
+      "chapter_title": "JavaScript",
+      "title": "Form validation",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Construct",
+      "question": "Write JavaScript for a form with id signupForm that prevents submission when the email field is empty or the age is not an integer from 18 to 60. Display one clear message in an element with id error.",
+      "model_answer": "Handle submit, read and trim the email, convert age to a number, validate both conditions, prevent submission only when invalid, and display an appropriate message.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Submit event handled"
+        },
+        {
+          "marks": 1,
+          "criterion": "Required elements located"
+        },
+        {
+          "marks": 2,
+          "criterion": "Email empty check"
+        },
+        {
+          "marks": 2,
+          "criterion": "Integer and range validation"
+        },
+        {
+          "marks": 1,
+          "criterion": "preventDefault used for invalid data"
+        },
+        {
+          "marks": 1,
+          "criterion": "Clear message displayed"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid data is allowed to submit"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Equivalent Boolean logic and DOM-selection methods are accepted. Built-in HTML validation may supplement but not replace the requested JavaScript checks.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "document.getElementById('signupForm').addEventListener('submit', event => {\n  const email = document.getElementById('email').value.trim();\n  const age = Number(document.getElementById('age').value);\n  const error = document.getElementById('error');\n  if (email === '' || !Number.isInteger(age) || age < 18 || age > 60) {\n    event.preventDefault();\n    error.textContent = 'Enter an email and an age from 18 to 60.';\n  } else {\n    error.textContent = '';\n  }\n});",
+      "code_language": "javascript",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C3-05",
+      "chapter": 3,
+      "chapter_title": "JavaScript",
+      "title": "Average and result category",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Develop",
+      "question": "Develop calculateAverage(a, b, c). It must return the average of three numeric scores. Display the average and PASS when it is at least 50; otherwise display FAIL.",
+      "model_answer": "Add the scores, divide by three, return the average, apply the threshold and display both values.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Function and parameters"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct average calculation"
+        },
+        {
+          "marks": 1,
+          "criterion": "Average returned"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct 50 threshold"
+        },
+        {
+          "marks": 2,
+          "criterion": "Average and category displayed"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid call/example"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "A function declaration or arrow function is accepted. DOM output or console output is accepted only if the question implementation context identifies that destination.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "function calculateAverage(a, b, c) {\n  return (a + b + c) / 3;\n}\nconst average = calculateAverage(60, 45, 75);\nconst category = average >= 50 ? 'PASS' : 'FAIL';\ndocument.getElementById('result').textContent =\n  `Average: ${average.toFixed(2)} - ${category}`;",
+      "code_language": "javascript",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C4-01",
+      "chapter": 4,
+      "chapter_title": "Web Programming Basic",
+      "title": "PHP scalar data types",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "List",
+      "question": "List the four PHP scalar data types and give one literal example of each.",
+      "model_answer": "Boolean (true), integer (25), float/double (3.5), and string ('ICT600').",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Boolean with example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Integer with example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Float/double with example"
+        },
+        {
+          "marks": 1,
+          "criterion": "String with example"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C4-02",
+      "chapter": 4,
+      "chapter_title": "Web Programming Basic",
+      "title": "Exact PHP string trace",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Trace",
+      "question": "Produce the exact output of the supplied PHP statements. Do not silently change the source string or search terms.",
+      "model_answer": "The replacement leaves the sentence unchanged because can is absent. substr($text, 2, 6) returns e sell. strpos($text, 'can') returns bool(false).",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Correct replacement result"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct substring"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct false result"
+        },
+        {
+          "marks": 2,
+          "criterion": "Reasoning recognises that can is absent"
+        }
+      ],
+      "source_basis": "Corrected from 20254 Test 1 Q4(b)",
+      "acceptable_alternatives": "",
+      "correction_note": "The historical scheme changed the operations and therefore answered a different program.",
+      "prompt_code": "$text = \"She sells sea shells by the sea shore now\";\necho str_replace('can', 'round', $text);\necho substr($text, 2, 6);\nvar_dump(strpos($text, 'can'));",
+      "answer_code": "She sells sea shells by the sea shore now\ne sell\nbool(false)",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C4-03",
+      "chapter": 4,
+      "chapter_title": "Web Programming Basic",
+      "title": "Function requirement fidelity",
+      "marks": 5,
+      "difficulty": "Intermediate",
+      "command_verb": "Write",
+      "question": "Write a PHP function printFirstName($firstName, $lastName) that accepts two parameters but prints only the first parameter. Call it using Aina and Rahman.",
+      "model_answer": "The function has two parameters, valid braces, echoes only $firstName, and is called with both values.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Valid function and two parameters"
+        },
+        {
+          "marks": 1,
+          "criterion": "Only first parameter printed"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid braces/syntax"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct call"
+        }
+      ],
+      "source_basis": "Corrected from May 2020 Test 1",
+      "acceptable_alternatives": "",
+      "correction_note": "The historical answer omitted an opening brace and printed both parameters.",
+      "prompt_code": "",
+      "answer_code": "function printFirstName($firstName, $lastName) {\n    echo $firstName;\n}\nprintFirstName('Aina', 'Rahman');",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C4-04",
+      "chapter": 4,
+      "chapter_title": "Web Programming Basic",
+      "title": "Array to table",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Construct",
+      "question": "Using a PHP multidimensional array, store and display these rows in an HTML table: ICT600, Web Technology, 3; ICT602, Mobile Technology, 3.",
+      "model_answer": "Create a nested array and iterate or index it to output two valid table rows and three cells per row.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Correct nested array"
+        },
+        {
+          "marks": 1,
+          "criterion": "Correct table structure"
+        },
+        {
+          "marks": 2,
+          "criterion": "Both rows displayed"
+        },
+        {
+          "marks": 2,
+          "criterion": "All cell values correct"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid PHP/HTML syntax"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "A foreach loop or explicit array indexes are accepted. Associative or indexed nested arrays are accepted.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<?php\n$courses = [\n    ['ICT600', 'Web Technology', 3],\n    ['ICT602', 'Mobile Technology', 3],\n];\n?>\n<table>\n<?php foreach ($courses as $course): ?>\n  <tr>\n  <?php foreach ($course as $value): ?>\n    <td><?= htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8') ?></td>\n  <?php endforeach; ?>\n  </tr>\n<?php endforeach; ?>\n</table>",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C4-05",
+      "chapter": 4,
+      "chapter_title": "Web Programming Basic",
+      "title": "Safe POST processing",
+      "marks": 12,
+      "difficulty": "Applied",
+      "command_verb": "Develop",
+      "question": "Develop receive.php to read name and programme from a POST request. Reject an empty value and otherwise display both values safely in HTML.",
+      "model_answer": "Require the POST method, read values with defaults, trim them, reject missing input, encode untrusted output and display the accepted values.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "POST method checked"
+        },
+        {
+          "marks": 2,
+          "criterion": "Both POST values read safely"
+        },
+        {
+          "marks": 1,
+          "criterion": "Values trimmed"
+        },
+        {
+          "marks": 2,
+          "criterion": "Empty-input validation"
+        },
+        {
+          "marks": 2,
+          "criterion": "Output encoding"
+        },
+        {
+          "marks": 2,
+          "criterion": "Both values displayed"
+        },
+        {
+          "marks": 2,
+          "criterion": "Valid PHP/HTML syntax and flow"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "filter_input may replace direct $_POST access. A helper function may encode output. Equivalent validation structure is accepted.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<?php\nif ($_SERVER['REQUEST_METHOD'] !== 'POST') {\n    http_response_code(405);\n    exit('Method not allowed');\n}\n$name = trim($_POST['name'] ?? '');\n$programme = trim($_POST['programme'] ?? '');\nif ($name === '' || $programme === '') {\n    exit('Name and programme are required.');\n}\nfunction e(string $value): string {\n    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');\n}\n?>\n<p>Name: <?= e($name) ?></p>\n<p>Programme: <?= e($programme) ?></p>",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C5-01",
+      "chapter": 5,
+      "chapter_title": "Web Techniques",
+      "title": "HTTP statelessness and state",
+      "marks": 6,
+      "difficulty": "Foundation",
+      "command_verb": "Explain",
+      "question": "Explain why HTTP is described as stateless and distinguish how a cookie and a server-side session can maintain state.",
+      "model_answer": "HTTP treats each request independently. A cookie stores a small value in the browser and sends applicable values with later requests. A server-side session stores state on the server and normally identifies the session through a cookie containing a session identifier.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Statelessness explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Cookie role explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Session role explained"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C5-02",
+      "chapter": 5,
+      "chapter_title": "Web Techniques",
+      "title": "GET, POST and HTTPS",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Differentiate",
+      "question": "Differentiate GET and POST by data location and typical purpose. Explain why POST alone does not make a password confidential.",
+      "model_answer": "GET parameters are commonly placed in the URL query string and suit retrieval. POST sends data in the request body and suits submissions or state changes. POST is not encryption; HTTPS/TLS is required to protect data in transit.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "GET data location"
+        },
+        {
+          "marks": 1,
+          "criterion": "GET typical purpose"
+        },
+        {
+          "marks": 1,
+          "criterion": "POST data location"
+        },
+        {
+          "marks": 1,
+          "criterion": "POST typical purpose"
+        },
+        {
+          "marks": 1,
+          "criterion": "POST is not encryption"
+        },
+        {
+          "marks": 1,
+          "criterion": "HTTPS/TLS requirement"
+        }
+      ],
+      "source_basis": "Corrected from the undated Test 1 answer-only scheme",
+      "acceptable_alternatives": "",
+      "correction_note": "The historical explanation could be read as if POST itself protects sensitive information.",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C5-03",
+      "chapter": 5,
+      "chapter_title": "Web Techniques",
+      "title": "HTTP status-code diagnosis",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Diagnose",
+      "question": "For each situation, state the most suitable HTTP status code: successful retrieval; missing page; unauthenticated request; authenticated user lacks permission; server-side failure; malformed client request.",
+      "model_answer": "200, 404, 401, 403, 500 and 400 respectively.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "200 success"
+        },
+        {
+          "marks": 1,
+          "criterion": "404 not found"
+        },
+        {
+          "marks": 1,
+          "criterion": "401 unauthenticated"
+        },
+        {
+          "marks": 1,
+          "criterion": "403 forbidden"
+        },
+        {
+          "marks": 1,
+          "criterion": "500 server error"
+        },
+        {
+          "marks": 1,
+          "criterion": "400 bad request"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Accept another precise 2xx success code only when justified by a changed scenario; otherwise use the listed codes.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C5-04",
+      "chapter": 5,
+      "chapter_title": "Web Techniques",
+      "title": "PHP session lifecycle",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Construct",
+      "question": "Write PHP that starts a session, stores the logged-in username Aina, reads it on the same request and provides a logout branch that clears the session when ?logout=1 is supplied.",
+      "model_answer": "Start the session before output, assign and read a session value, and on logout clear data and destroy the session.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "session_start before output"
+        },
+        {
+          "marks": 2,
+          "criterion": "Username stored"
+        },
+        {
+          "marks": 1,
+          "criterion": "Username read"
+        },
+        {
+          "marks": 1,
+          "criterion": "Logout condition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Session data cleared"
+        },
+        {
+          "marks": 1,
+          "criterion": "Session destroyed"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid control flow"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Explicitly unsetting the username may replace session_unset when the requirement is limited to that key.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<?php\nsession_start();\nif (($_GET['logout'] ?? '') === '1') {\n    session_unset();\n    session_destroy();\n    exit('Logged out');\n}\n$_SESSION['username'] = 'Aina';\necho htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8');\n?>",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C5-05",
+      "chapter": 5,
+      "chapter_title": "Web Techniques",
+      "title": "AJAX interaction",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Explain",
+      "question": "Explain the AJAX request flow for a live-search box and give two advantages and one limitation of using AJAX for this feature.",
+      "model_answer": "A user event triggers JavaScript, which sends an asynchronous HTTP request. The server processes the query and returns data; JavaScript updates part of the page without a full reload. Advantages include responsiveness and reduced full-page transfer. Limitations include added client-side complexity, error handling, accessibility/history concerns, or dependency on JavaScript/network availability.",
+      "rubric": [
+        {
+          "marks": 4,
+          "criterion": "Event, request, server response and partial DOM update"
+        },
+        {
+          "marks": 2,
+          "criterion": "Two valid advantages"
+        },
+        {
+          "marks": 1,
+          "criterion": "One valid limitation"
+        },
+        {
+          "marks": 1,
+          "criterion": "Answer tied to live search"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "fetch, XMLHttpRequest, JSON or XML terminology is accepted when the described flow is correct.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C6-01",
+      "chapter": 6,
+      "chapter_title": "Web Databases",
+      "title": "Database terminology",
+      "marks": 6,
+      "difficulty": "Foundation",
+      "command_verb": "Define",
+      "question": "Define database, DBMS and database system (DBS).",
+      "model_answer": "A database is an organised collection of data. A DBMS is software used to create, maintain and access databases. A database system consists of the database, DBMS and supporting tools/interfaces.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Database definition"
+        },
+        {
+          "marks": 2,
+          "criterion": "DBMS definition"
+        },
+        {
+          "marks": 2,
+          "criterion": "DBS definition"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C6-02",
+      "chapter": 6,
+      "chapter_title": "Web Databases",
+      "title": "Relational table design",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Construct",
+      "question": "Write MySQL DDL for a students table with student_id as an automatically incrementing primary key, name up to 100 characters, unique email up to 150 characters, and cgpa with two decimal places.",
+      "model_answer": "Use CREATE TABLE, suitable data types, AUTO_INCREMENT, PRIMARY KEY and UNIQUE constraints.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "CREATE TABLE and table name"
+        },
+        {
+          "marks": 2,
+          "criterion": "student_id integer AUTO_INCREMENT"
+        },
+        {
+          "marks": 1,
+          "criterion": "Primary key"
+        },
+        {
+          "marks": 1,
+          "criterion": "name definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "unique email definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "cgpa decimal definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Valid MySQL syntax"
+        }
+      ],
+      "source_basis": "Aligned with final-exam DDL patterns",
+      "acceptable_alternatives": "",
+      "correction_note": "AUTO_INCREMENT is required when the question or rubric specifies automatic identifiers.",
+      "prompt_code": "",
+      "answer_code": "CREATE TABLE students (\n  student_id INT AUTO_INCREMENT PRIMARY KEY,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(150) NOT NULL UNIQUE,\n  cgpa DECIMAL(3,2) NOT NULL\n);",
+      "code_language": "sql",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C6-03",
+      "chapter": 6,
+      "chapter_title": "Web Databases",
+      "title": "CRUD statements",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Write",
+      "question": "For a courses(code, title, credit) table, write one SQL statement each to insert ICT600/Web Technology/3, update its credit to 4, select the row, and delete the row.",
+      "model_answer": "Use INSERT, UPDATE with WHERE, SELECT with WHERE, and DELETE with WHERE.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Correct INSERT"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct UPDATE and WHERE"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct SELECT and WHERE"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct DELETE and WHERE"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "INSERT INTO courses (code, title, credit)\nVALUES ('ICT600', 'Web Technology', 3);\nUPDATE courses SET credit = 4 WHERE code = 'ICT600';\nSELECT code, title, credit FROM courses WHERE code = 'ICT600';\nDELETE FROM courses WHERE code = 'ICT600';",
+      "code_language": "sql",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C6-04",
+      "chapter": 6,
+      "chapter_title": "Web Databases",
+      "title": "Related-table query",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Develop",
+      "question": "Tables students(student_id, name) and registrations(student_id, course_code, mark) are related by student_id. Write SQL to list each student's name and mark for ICT600, highest mark first.",
+      "model_answer": "Join students to registrations on student_id, filter ICT600, select name and mark, and sort mark descending.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Correct tables and selected columns"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct JOIN condition"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct ICT600 filter"
+        },
+        {
+          "marks": 2,
+          "criterion": "Descending mark order"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "INNER JOIN or an equivalent valid join expression is accepted. Table aliases are optional.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "SELECT s.name, r.mark\nFROM students AS s\nINNER JOIN registrations AS r\n  ON s.student_id = r.student_id\nWHERE r.course_code = 'ICT600'\nORDER BY r.mark DESC;",
+      "code_language": "sql",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C6-05",
+      "chapter": 6,
+      "chapter_title": "Web Databases",
+      "title": "Prepared MySQLi insert",
+      "marks": 12,
+      "difficulty": "Applied",
+      "command_verb": "Develop",
+      "question": "Using an existing MySQLi connection $conn, write PHP that reads name and email from POST, rejects empty values, and inserts them into students(name, email) with a prepared statement.",
+      "model_answer": "Read and validate both values, prepare an INSERT with placeholders, bind two strings, execute it and handle success/failure.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "POST values read and trimmed"
+        },
+        {
+          "marks": 2,
+          "criterion": "Empty-input validation"
+        },
+        {
+          "marks": 2,
+          "criterion": "Prepared INSERT with placeholders"
+        },
+        {
+          "marks": 2,
+          "criterion": "Two string values bound"
+        },
+        {
+          "marks": 2,
+          "criterion": "Statement executed"
+        },
+        {
+          "marks": 1,
+          "criterion": "Result handled"
+        },
+        {
+          "marks": 1,
+          "criterion": "Statement closed/valid flow"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "PDO with named or positional parameters is fully accepted. Procedural or object-oriented MySQLi is accepted. Direct interpolation is not equivalent because it omits the requested prepared statement.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "<?php\n$name = trim($_POST['name'] ?? '');\n$email = trim($_POST['email'] ?? '');\nif ($name === '' || $email === '') {\n    exit('Name and email are required.');\n}\n$stmt = mysqli_prepare($conn,\n    'INSERT INTO students (name, email) VALUES (?, ?)');\nmysqli_stmt_bind_param($stmt, 'ss', $name, $email);\necho mysqli_stmt_execute($stmt) ? 'Saved' : 'Insert failed';\nmysqli_stmt_close($stmt);\n?>",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C7-01",
+      "chapter": 7,
+      "chapter_title": "Framework",
+      "title": "Web application framework",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "Define",
+      "question": "Define a web application framework and state two problems it commonly reduces.",
+      "model_answer": "A web application framework is a reusable collection of libraries, conventions and tools that supports web application development. It reduces repeated infrastructure work and encourages organised, maintainable code.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Accurate framework definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "First valid problem/benefit"
+        },
+        {
+          "marks": 1,
+          "criterion": "Second valid problem/benefit"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C7-02",
+      "chapter": 7,
+      "chapter_title": "Framework",
+      "title": "MVC responsibilities",
+      "marks": 6,
+      "difficulty": "Foundation",
+      "command_verb": "Explain",
+      "question": "Explain the responsibility of the Model, View and Controller in MVC.",
+      "model_answer": "The Model represents data and business/data-access logic. The View presents information to the user. The Controller receives requests/input, coordinates processing with the Model and selects a response/View.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Model"
+        },
+        {
+          "marks": 2,
+          "criterion": "View"
+        },
+        {
+          "marks": 2,
+          "criterion": "Controller"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Wording may follow the lecture notes or a named MVC framework, provided responsibilities are separated correctly.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C7-03",
+      "chapter": 7,
+      "chapter_title": "Framework",
+      "title": "MVC request flow",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Sequence",
+      "question": "A user requests /courses/ICT600. Sequence the request through a router, controller, model and view, and identify the data passed between them.",
+      "model_answer": "The router matches the URL to a controller action. The controller requests ICT600 data from the Model. The Model reads/returns course data. The controller passes that data to the View. The View renders the response returned to the user.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Router to controller"
+        },
+        {
+          "marks": 2,
+          "criterion": "Controller to model with requested identifier"
+        },
+        {
+          "marks": 2,
+          "criterion": "Model returns course data"
+        },
+        {
+          "marks": 1,
+          "criterion": "Controller passes data to view"
+        },
+        {
+          "marks": 1,
+          "criterion": "View renders response"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C7-04",
+      "chapter": 7,
+      "chapter_title": "Framework",
+      "title": "Framework trade-offs",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Assess",
+      "question": "Assess two advantages and two disadvantages of using a framework for a medium-sized team web application.",
+      "model_answer": "Advantages include reusable components, standard structure, faster development, routing/database/security facilities and easier teamwork. Disadvantages include learning curve, framework overhead, version dependency, reduced flexibility and vulnerabilities in outdated framework code.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "First advantage explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Second advantage explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "First disadvantage explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Second disadvantage explained"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Any well-explained advantages/disadvantages consistent with the lecture notes are accepted.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C7-05",
+      "chapter": 7,
+      "chapter_title": "Framework",
+      "title": "Map code to MVC",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Design",
+      "question": "Design the MVC responsibilities for a student-list page. State what belongs in the Model, View and Controller, and explain two benefits of this separation.",
+      "model_answer": "Model: retrieve and represent student records. Controller: handle the request, call the Model and pass records to the View. View: render the student table without database access. Benefits include maintainability, testability, reusability, parallel team work and easier changes to presentation/data storage.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Model responsibility"
+        },
+        {
+          "marks": 2,
+          "criterion": "Controller responsibility"
+        },
+        {
+          "marks": 2,
+          "criterion": "View responsibility"
+        },
+        {
+          "marks": 2,
+          "criterion": "First benefit explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Second benefit explained"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C8-01",
+      "chapter": 8,
+      "chapter_title": "Web Services",
+      "title": "Web application versus web service",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "Differentiate",
+      "question": "Differentiate a web application from a web service using the primary consumer and interface.",
+      "model_answer": "A web application normally provides a user interface for people. A web service exposes a programmatic interface so software systems can exchange data or invoke functionality.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Web application accurately described"
+        },
+        {
+          "marks": 2,
+          "criterion": "Web service accurately described"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C8-02",
+      "chapter": 8,
+      "chapter_title": "Web Services",
+      "title": "SOAP platform components",
+      "marks": 8,
+      "difficulty": "Intermediate",
+      "command_verb": "Explain",
+      "question": "Explain the role of XML, SOAP, WSDL and UDDI in the traditional web-services platform.",
+      "model_answer": "XML represents/tags data. SOAP defines the message format used to exchange messages. WSDL describes the service interface and how to access it. UDDI is a registry concept for publishing and discovering services.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "XML"
+        },
+        {
+          "marks": 2,
+          "criterion": "SOAP"
+        },
+        {
+          "marks": 2,
+          "criterion": "WSDL"
+        },
+        {
+          "marks": 2,
+          "criterion": "UDDI"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "Treat UDDI as the traditional registry model taught in the notes, not as a requirement of every current service.",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C8-03",
+      "chapter": 8,
+      "chapter_title": "Web Services",
+      "title": "RESTful resource operations",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Map",
+      "question": "For a RESTful /students resource, map list, retrieve one, create, update and delete operations to suitable HTTP methods and paths.",
+      "model_answer": "GET /students lists; GET /students/15 retrieves one; POST /students creates; PUT or PATCH /students/15 updates; DELETE /students/15 deletes.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "List mapping"
+        },
+        {
+          "marks": 1,
+          "criterion": "Retrieve-one mapping"
+        },
+        {
+          "marks": 2,
+          "criterion": "Create mapping"
+        },
+        {
+          "marks": 2,
+          "criterion": "Update mapping"
+        },
+        {
+          "marks": 2,
+          "criterion": "Delete mapping"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "PUT or PATCH is accepted for update when used consistently with the stated replacement/partial-update semantics.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C8-04",
+      "chapter": 8,
+      "chapter_title": "Web Services",
+      "title": "Service provider, requestor and registry",
+      "marks": 6,
+      "difficulty": "Intermediate",
+      "command_verb": "Describe",
+      "question": "Describe the roles of service provider, service requestor/consumer and service registry in a traditional web-service architecture.",
+      "model_answer": "The provider implements and publishes the service. The registry stores descriptions to support discovery. The requestor discovers/obtains the description and invokes the provider.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "Provider"
+        },
+        {
+          "marks": 2,
+          "criterion": "Registry"
+        },
+        {
+          "marks": 2,
+          "criterion": "Requestor/consumer"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C8-05",
+      "chapter": 8,
+      "chapter_title": "Web Services",
+      "title": "Choose SOAP or REST",
+      "marks": 10,
+      "difficulty": "Applied",
+      "command_verb": "Recommend",
+      "question": "A mobile application needs a simple JSON API over HTTP. A separate inter-agency system requires a strict XML contract and message-level standards. Recommend REST or SOAP for each and justify the decisions using four characteristics.",
+      "model_answer": "Use REST for the mobile JSON API because it uses resource-oriented HTTP operations and lightweight representations. Use SOAP for the inter-agency system when a formal XML message contract and SOAP-related standards are required.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "REST selected for mobile scenario"
+        },
+        {
+          "marks": 2,
+          "criterion": "Two relevant REST reasons"
+        },
+        {
+          "marks": 2,
+          "criterion": "SOAP selected for inter-agency scenario"
+        },
+        {
+          "marks": 2,
+          "criterion": "Two relevant SOAP reasons"
+        },
+        {
+          "marks": 2,
+          "criterion": "Clear scenario-based comparison"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "A different recommendation can receive credit only when it is technically coherent and explicitly connected to the requirements.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C9-01",
+      "chapter": 9,
+      "chapter_title": "Web Security",
+      "title": "Threat and vulnerability",
+      "marks": 4,
+      "difficulty": "Foundation",
+      "command_verb": "Differentiate",
+      "question": "Differentiate a threat from a vulnerability and give one web-application example of each.",
+      "model_answer": "A vulnerability is a weakness, such as unvalidated input. A threat is something capable of exploiting a weakness, such as an attacker attempting SQL injection.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Vulnerability definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Vulnerability example"
+        },
+        {
+          "marks": 1,
+          "criterion": "Threat definition"
+        },
+        {
+          "marks": 1,
+          "criterion": "Threat example"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C9-02",
+      "chapter": 9,
+      "chapter_title": "Web Security",
+      "title": "Malware identification",
+      "marks": 6,
+      "difficulty": "Foundation",
+      "command_verb": "Identify",
+      "question": "Identify the most suitable term for each description: self-replicates across systems; appears useful but hides malicious behaviour; encrypts files for payment; secretly collects user information; displays unwanted advertising; infects or modifies other files.",
+      "model_answer": "Worm, Trojan horse, ransomware, spyware, adware, virus.",
+      "rubric": [
+        {
+          "marks": 1,
+          "criterion": "Worm"
+        },
+        {
+          "marks": 1,
+          "criterion": "Trojan horse"
+        },
+        {
+          "marks": 1,
+          "criterion": "Ransomware"
+        },
+        {
+          "marks": 1,
+          "criterion": "Spyware"
+        },
+        {
+          "marks": 1,
+          "criterion": "Adware"
+        },
+        {
+          "marks": 1,
+          "criterion": "Virus"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C9-03",
+      "chapter": 9,
+      "chapter_title": "Web Security",
+      "title": "SQL injection prevention",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Correct",
+      "question": "A login query is built by concatenating username and password into SQL. Identify the vulnerability and propose four concrete corrections.",
+      "model_answer": "The vulnerability is SQL injection. Use prepared statements/parameter binding; validate input; store password hashes and verify them with password_verify rather than comparing plain text; use a least-privileged database account; return generic authentication errors.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "SQL injection identified and explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Prepared statement/parameter binding"
+        },
+        {
+          "marks": 1,
+          "criterion": "Input validation"
+        },
+        {
+          "marks": 1,
+          "criterion": "Password hashing/verification"
+        },
+        {
+          "marks": 1,
+          "criterion": "Least privilege"
+        },
+        {
+          "marks": 1,
+          "criterion": "Generic error or other valid defence-in-depth control"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "Award other concrete defence-in-depth controls, but escaping alone is not equivalent to the requested primary prepared-statement control.",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C9-04",
+      "chapter": 9,
+      "chapter_title": "Web Security",
+      "title": "Cross-site scripting prevention",
+      "marks": 8,
+      "difficulty": "Applied",
+      "command_verb": "Correct",
+      "question": "A comment entered by a user is inserted into an HTML page without encoding. Identify the vulnerability and show a safe PHP output statement for $comment. Explain why input validation alone is insufficient.",
+      "model_answer": "The vulnerability is cross-site scripting (XSS). Encode untrusted output for the HTML context with htmlspecialchars. Input validation can reject known bad forms but output encoding prevents data from being interpreted as markup/script in its destination context.",
+      "rubric": [
+        {
+          "marks": 2,
+          "criterion": "XSS identified and explained"
+        },
+        {
+          "marks": 2,
+          "criterion": "Correct htmlspecialchars call"
+        },
+        {
+          "marks": 1,
+          "criterion": "ENT_QUOTES"
+        },
+        {
+          "marks": 1,
+          "criterion": "UTF-8"
+        },
+        {
+          "marks": 2,
+          "criterion": "Why contextual output encoding is still required"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "echo htmlspecialchars($comment, ENT_QUOTES, 'UTF-8');",
+      "code_language": "php",
+      "verification_status": "verified for teaching use"
+    },
+    {
+      "id": "C9-05",
+      "chapter": 9,
+      "chapter_title": "Web Security",
+      "title": "Secure session and authentication review",
+      "marks": 12,
+      "difficulty": "Applied",
+      "command_verb": "Assess",
+      "question": "A site uses HTTP for login, stores plain-text passwords, keeps the same session ID after login, places the session ID in the URL, and never expires sessions. Identify and correct each weakness.",
+      "model_answer": "Use HTTPS/TLS; store passwords with password_hash and verify with password_verify; regenerate the session ID after authentication; keep session identifiers in cookies rather than URLs and set Secure/HttpOnly/SameSite as appropriate; enforce inactivity and absolute timeouts and destroy the session on logout.",
+      "rubric": [
+        {
+          "marks": 4,
+          "criterion": "HTTPS/TLS plus password hashing and verification (2 marks each)"
+        },
+        {
+          "marks": 4,
+          "criterion": "Session ID regeneration plus removal from URLs (2 marks each)"
+        },
+        {
+          "marks": 4,
+          "criterion": "Secure cookie attributes plus timeout/logout controls (2 marks each)"
+        }
+      ],
+      "source_basis": "Lecture-note aligned original",
+      "acceptable_alternatives": "",
+      "correction_note": "",
+      "prompt_code": "",
+      "answer_code": "",
+      "code_language": "text",
+      "verification_status": "verified for teaching use"
+    }
+  ],
+  "quizzes": [
+    {
+      "quiz": 1,
+      "chapter": 1,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "1(a)",
+          "marks": 2,
+          "question": "State one difference between the Internet and the Web.",
+          "answer": "The Internet is the network infrastructure; the Web is an information system that uses it.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Internet"
+            },
+            {
+              "marks": 1,
+              "criterion": "Web"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "1(b)",
+          "marks": 4,
+          "question": "Explain one HTTP request-response cycle and state the meaning of status codes 200 and 404.",
+          "answer": "A client sends a request; the server processes it and returns a response. 200 means success; 404 means not found.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Cycle"
+            },
+            {
+              "marks": 1,
+              "criterion": "200"
+            },
+            {
+              "marks": 1,
+              "criterion": "404"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "1(c)",
+          "marks": 4,
+          "question": "A faculty wants non-programmers to publish pages through a browser. Identify the suitable platform category and explain one supporting feature.",
+          "answer": "A content management system; examples of supporting features include browser administration, roles/workflow, themes or plugins.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "CMS identified"
+            },
+            {
+              "marks": 2,
+              "criterion": "Relevant feature explained"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": "Any accurate CMS feature connected to the scenario."
+        }
+      ]
+    },
+    {
+      "quiz": 2,
+      "chapter": 2,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "2(a)",
+          "marks": 3,
+          "question": "Correct the invalid heading and image markup.",
+          "answer": "Use a closing h1 tag and ASCII-quoted src/alt attributes.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Closing h1"
+            },
+            {
+              "marks": 1,
+              "criterion": "Valid src"
+            },
+            {
+              "marks": 1,
+              "criterion": "Valid alt"
+            }
+          ],
+          "prompt_code": "<h1>Vision<h1>\n<img src=\"logo.jpg alt=\u201dLogo>",
+          "answer_code": "<h1>Vision</h1>\n<img src=\"logo.jpg\" alt=\"Logo\">",
+          "language": "html",
+          "alternatives": ""
+        },
+        {
+          "label": "2(b)",
+          "marks": 3,
+          "question": "Differentiate internal and external CSS and state which is preferable for ten pages sharing one design.",
+          "answer": "Internal CSS is in a style element in one page. External CSS is in a linked file and is preferable for shared multi-page styling.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Internal"
+            },
+            {
+              "marks": 1,
+              "criterion": "External"
+            },
+            {
+              "marks": 1,
+              "criterion": "External selected with reason"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "2(c)",
+          "marks": 4,
+          "question": "Write a required email control with an associated label inside a form that posts to submit.php.",
+          "answer": "Use form method POST/action submit.php, a label associated through for/id, and an email input with name and required.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Form method/action"
+            },
+            {
+              "marks": 1,
+              "criterion": "Associated label"
+            },
+            {
+              "marks": 1,
+              "criterion": "Email type and name"
+            },
+            {
+              "marks": 1,
+              "criterion": "required"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "<form method=\"post\" action=\"submit.php\">\n  <label for=\"email\">Email</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n</form>",
+          "language": "html",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "quiz": 3,
+      "chapter": 3,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "3(a)",
+          "marks": 2,
+          "question": "State two ways to include JavaScript in HTML.",
+          "answer": "Any two of inline event attribute, internal script element, or external script file.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "First method"
+            },
+            {
+              "marks": 1,
+              "criterion": "Second method"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "3(b)",
+          "marks": 2,
+          "question": "State the output.",
+          "answer": "8",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Correct output"
+            }
+          ],
+          "prompt_code": "let total = 5;\ntotal += 3;\nconsole.log(total);",
+          "answer_code": "8",
+          "language": "javascript",
+          "alternatives": ""
+        },
+        {
+          "label": "3(c)",
+          "marks": 6,
+          "question": "Write JavaScript that displays the value of input #name in paragraph #result when button #show is clicked.",
+          "answer": "Locate the elements, handle click, read the input and update the paragraph.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Input"
+            },
+            {
+              "marks": 1,
+              "criterion": "Paragraph"
+            },
+            {
+              "marks": 1,
+              "criterion": "Button/event"
+            },
+            {
+              "marks": 1,
+              "criterion": "Value read"
+            },
+            {
+              "marks": 2,
+              "criterion": "DOM updated correctly"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "document.getElementById('show').addEventListener('click', () => {\n  const name = document.getElementById('name').value;\n  document.getElementById('result').textContent = name;\n});",
+          "language": "javascript",
+          "alternatives": "querySelector and an equivalent handler/function form are accepted."
+        }
+      ]
+    },
+    {
+      "quiz": 4,
+      "chapter": 4,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "4(a)",
+          "marks": 2,
+          "question": "Name two PHP scalar data types and give a literal example of each.",
+          "answer": "For example: integer 10 and string 'ICT600'.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "First type/example"
+            },
+            {
+              "marks": 1,
+              "criterion": "Second type/example"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "4(b)",
+          "marks": 3,
+          "question": "Produce the exact output.",
+          "answer": "ICT600!",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Concatenation recognised"
+            },
+            {
+              "marks": 2,
+              "criterion": "Exact output"
+            }
+          ],
+          "prompt_code": "$course = 'ICT600';\necho $course . '!';",
+          "answer_code": "ICT600!",
+          "language": "php",
+          "alternatives": ""
+        },
+        {
+          "label": "4(c)",
+          "marks": 5,
+          "question": "Write a PHP function grade($mark) that returns PASS for marks at least 50 and FAIL otherwise. Show one call.",
+          "answer": "Use one parameter, a correct threshold, return both possible values and call the function.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Function/parameter"
+            },
+            {
+              "marks": 2,
+              "criterion": "Correct condition and both branches"
+            },
+            {
+              "marks": 1,
+              "criterion": "Return values"
+            },
+            {
+              "marks": 1,
+              "criterion": "Call"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "function grade($mark) {\n    return $mark >= 50 ? 'PASS' : 'FAIL';\n}\necho grade(65);",
+          "language": "php",
+          "alternatives": "if/else, ternary or match/other equivalent valid control structure is accepted."
+        }
+      ]
+    },
+    {
+      "quiz": 5,
+      "chapter": 5,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "5(a)",
+          "marks": 4,
+          "question": "Explain stateless HTTP and distinguish a cookie from a session.",
+          "answer": "HTTP requests are independent. A cookie stores data in the browser; a session stores state on the server and is normally linked by a session identifier.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Stateless"
+            },
+            {
+              "marks": 1,
+              "criterion": "Cookie"
+            },
+            {
+              "marks": 1,
+              "criterion": "Session"
+            },
+            {
+              "marks": 1,
+              "criterion": "Clear distinction"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "5(b)",
+          "marks": 2,
+          "question": "State the suitable status code for a missing page and a server failure.",
+          "answer": "404 and 500.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "404"
+            },
+            {
+              "marks": 1,
+              "criterion": "500"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "5(c)",
+          "marks": 4,
+          "question": "Sequence the four main steps of an AJAX live-search interaction.",
+          "answer": "User event; asynchronous request; server processing/response; partial page update.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Event"
+            },
+            {
+              "marks": 1,
+              "criterion": "Request"
+            },
+            {
+              "marks": 1,
+              "criterion": "Server response"
+            },
+            {
+              "marks": 1,
+              "criterion": "DOM/partial update"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "quiz": 6,
+      "chapter": 6,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "6(a)",
+          "marks": 2,
+          "question": "Differentiate a database from a DBMS.",
+          "answer": "A database stores organised data; a DBMS is software that creates, maintains and accesses databases.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Database"
+            },
+            {
+              "marks": 1,
+              "criterion": "DBMS"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "6(b)",
+          "marks": 4,
+          "question": "Write MySQL to create courses(code, title) with code as the primary key.",
+          "answer": "Use CREATE TABLE, suitable character types and PRIMARY KEY.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "CREATE TABLE"
+            },
+            {
+              "marks": 1,
+              "criterion": "code"
+            },
+            {
+              "marks": 1,
+              "criterion": "title"
+            },
+            {
+              "marks": 1,
+              "criterion": "primary key"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "CREATE TABLE courses (\n  code VARCHAR(10) PRIMARY KEY,\n  title VARCHAR(100) NOT NULL\n);",
+          "language": "sql",
+          "alternatives": ""
+        },
+        {
+          "label": "6(c)",
+          "marks": 4,
+          "question": "Write SQL to list code and title for courses whose credit is 3, ordered by title.",
+          "answer": "SELECT code/title, WHERE credit=3, ORDER BY title.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Columns"
+            },
+            {
+              "marks": 1,
+              "criterion": "Table"
+            },
+            {
+              "marks": 1,
+              "criterion": "Filter"
+            },
+            {
+              "marks": 1,
+              "criterion": "Order"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "SELECT code, title\nFROM courses\nWHERE credit = 3\nORDER BY title;",
+          "language": "sql",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "quiz": 7,
+      "chapter": 7,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "7(a)",
+          "marks": 6,
+          "question": "Explain the responsibilities of Model, View and Controller.",
+          "answer": "Model handles data/business data logic; View presents output; Controller handles requests and coordinates Model/View.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Model"
+            },
+            {
+              "marks": 2,
+              "criterion": "View"
+            },
+            {
+              "marks": 2,
+              "criterion": "Controller"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "7(b)",
+          "marks": 4,
+          "question": "Sequence router, controller, model and view for a request.",
+          "answer": "Router selects controller; controller calls model; model returns data; controller passes data to view for rendering.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Router"
+            },
+            {
+              "marks": 1,
+              "criterion": "Controller"
+            },
+            {
+              "marks": 1,
+              "criterion": "Model"
+            },
+            {
+              "marks": 1,
+              "criterion": "View"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "quiz": 8,
+      "chapter": 8,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "8(a)",
+          "marks": 4,
+          "question": "State the role of SOAP and WSDL.",
+          "answer": "SOAP defines the message format/protocol; WSDL describes the service interface and access details.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "SOAP"
+            },
+            {
+              "marks": 2,
+              "criterion": "WSDL"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "8(b)",
+          "marks": 4,
+          "question": "Map create, retrieve, update and delete of /students/15 to HTTP methods.",
+          "answer": "POST /students; GET /students/15; PUT/PATCH /students/15; DELETE /students/15.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Create"
+            },
+            {
+              "marks": 1,
+              "criterion": "Retrieve"
+            },
+            {
+              "marks": 1,
+              "criterion": "Update"
+            },
+            {
+              "marks": 1,
+              "criterion": "Delete"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "8(c)",
+          "marks": 2,
+          "question": "State one difference between a web application and a web service.",
+          "answer": "A web application normally serves a human-facing UI; a web service exposes a programmatic interface for systems.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Application"
+            },
+            {
+              "marks": 1,
+              "criterion": "Service"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "quiz": 9,
+      "chapter": 9,
+      "time": "15 minutes",
+      "parts": [
+        {
+          "label": "9(a)",
+          "marks": 2,
+          "question": "Differentiate a threat from a vulnerability.",
+          "answer": "A vulnerability is a weakness; a threat may exploit that weakness.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Vulnerability"
+            },
+            {
+              "marks": 1,
+              "criterion": "Threat"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "9(b)",
+          "marks": 4,
+          "question": "Identify the vulnerability in each case and give the primary correction: SQL built by concatenating user input; comment printed as HTML without encoding.",
+          "answer": "SQL injection - prepared statement. XSS - context-appropriate output encoding such as htmlspecialchars.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "SQL injection"
+            },
+            {
+              "marks": 1,
+              "criterion": "Prepared statement"
+            },
+            {
+              "marks": 1,
+              "criterion": "XSS"
+            },
+            {
+              "marks": 1,
+              "criterion": "Output encoding"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "9(c)",
+          "marks": 4,
+          "question": "State four controls for a secure authenticated session.",
+          "answer": "Examples: HTTPS, regenerate ID after login, Secure/HttpOnly/SameSite cookies, inactivity timeout, logout destruction, do not place IDs in URLs.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Any valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Any valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Any valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Any valid control"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    }
+  ],
+  "cumulative_mock": [
+    {
+      "question": 1,
+      "chapter": 1,
+      "marks": 14,
+      "parts": [
+        {
+          "label": "1(a)",
+          "marks": 6,
+          "question": "Define Internet, intranet and extranet.",
+          "answer": "Internet is the global network of networks; intranet is a private organisational network; extranet provides controlled external access to selected organisational resources.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Internet"
+            },
+            {
+              "marks": 2,
+              "criterion": "Intranet"
+            },
+            {
+              "marks": 2,
+              "criterion": "Extranet"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "1(b)",
+          "marks": 4,
+          "question": "Explain the HTTP request-response cycle and state what 200 and 404 mean.",
+          "answer": "A client sends a request and the server returns a response after processing it. 200 means successful; 404 means not found.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Cycle"
+            },
+            {
+              "marks": 1,
+              "criterion": "200"
+            },
+            {
+              "marks": 1,
+              "criterion": "404"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "1(c)",
+          "marks": 4,
+          "question": "A department wants staff to publish pages without writing code. Recommend a suitable platform category and explain one supporting characteristic.",
+          "answer": "Use a CMS. A relevant feature may be browser-based editing, roles/workflow, templates/themes or extensions.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "CMS"
+            },
+            {
+              "marks": 2,
+              "criterion": "Relevant characteristic explained"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "question": 2,
+      "chapter": 2,
+      "marks": 11,
+      "parts": [
+        {
+          "label": "2(a)",
+          "marks": 3,
+          "question": "Rewrite the supplied fragment as valid accessible HTML.",
+          "answer": "Close the h1 correctly and use valid quoted src/alt attributes.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "h1"
+            },
+            {
+              "marks": 1,
+              "criterion": "src"
+            },
+            {
+              "marks": 1,
+              "criterion": "alt"
+            }
+          ],
+          "prompt_code": "<h1>Student Portal<h1>\n<img src=\"portal.png alt=\u201dPortal>",
+          "answer_code": "<h1>Student Portal</h1>\n<img src=\"portal.png\" alt=\"Portal\">",
+          "language": "html",
+          "alternatives": ""
+        },
+        {
+          "label": "2(b)",
+          "marks": 4,
+          "question": "Write internal CSS for .notice with a navy background, white text, 1rem padding and centred text.",
+          "answer": "Use a valid .notice rule with all four declarations.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Selector"
+            },
+            {
+              "marks": 1,
+              "criterion": "Colours"
+            },
+            {
+              "marks": 1,
+              "criterion": "Padding"
+            },
+            {
+              "marks": 1,
+              "criterion": "Alignment"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": ".notice {\n  background: navy;\n  color: white;\n  padding: 1rem;\n  text-align: center;\n}",
+          "language": "css",
+          "alternatives": ""
+        },
+        {
+          "label": "2(c)",
+          "marks": 4,
+          "question": "Write a form that posts a required email value to register.php. Include an associated label and submit button.",
+          "answer": "Use POST/action, label for/id, email input with name/required and a submit button.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Form method/action"
+            },
+            {
+              "marks": 1,
+              "criterion": "Label"
+            },
+            {
+              "marks": 1,
+              "criterion": "Email control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Submit"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "<form method=\"post\" action=\"register.php\">\n  <label for=\"email\">Email</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n  <button type=\"submit\">Register</button>\n</form>",
+          "language": "html",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "question": 3,
+      "chapter": 3,
+      "marks": 15,
+      "parts": [
+        {
+          "label": "3(a)",
+          "marks": 5,
+          "question": "List three JavaScript inclusion methods and explain why defer can be used for an external script in the head.",
+          "answer": "Inline, internal and external; defer avoids blocking parsing and runs the script after the document is parsed.",
+          "rubric": [
+            {
+              "marks": 3,
+              "criterion": "Methods"
+            },
+            {
+              "marks": 1,
+              "criterion": "Non-blocking/parsing"
+            },
+            {
+              "marks": 1,
+              "criterion": "Execution after parsing"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "3(b)",
+          "marks": 10,
+          "question": "Write calculateTotal(price, quantity). It must return price multiplied by quantity. When button #calculate is clicked, read numeric inputs #price and #quantity and display Total: RM followed by two decimals in #receipt.",
+          "answer": "Create the function, handle click, convert inputs to numbers, calculate and update the DOM with two-decimal output.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Function/parameters"
+            },
+            {
+              "marks": 2,
+              "criterion": "Correct calculation and return"
+            },
+            {
+              "marks": 1,
+              "criterion": "Click handler"
+            },
+            {
+              "marks": 2,
+              "criterion": "Numeric input reading"
+            },
+            {
+              "marks": 2,
+              "criterion": "DOM output"
+            },
+            {
+              "marks": 1,
+              "criterion": "Two decimals"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "function calculateTotal(price, quantity) {\n  return price * quantity;\n}\ndocument.getElementById('calculate').addEventListener('click', () => {\n  const price = Number(document.getElementById('price').value);\n  const quantity = Number(document.getElementById('quantity').value);\n  const total = calculateTotal(price, quantity);\n  document.getElementById('receipt').textContent = `Total: RM ${total.toFixed(2)}`;\n});",
+          "language": "javascript",
+          "alternatives": "Equivalent DOM selectors and function/callback forms are accepted. innerHTML is accepted if no untrusted markup is inserted."
+        }
+      ]
+    },
+    {
+      "question": 4,
+      "chapter": 4,
+      "marks": 14,
+      "parts": [
+        {
+          "label": "4(a)",
+          "marks": 6,
+          "question": "Produce the exact output of the PHP code.",
+          "answer": "Web Technology; bool(false). The replacement term is absent, and strpos returns false.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Unchanged string"
+            },
+            {
+              "marks": 2,
+              "criterion": "bool(false)"
+            },
+            {
+              "marks": 2,
+              "criterion": "Reasoning"
+            }
+          ],
+          "prompt_code": "$text = 'Web Technology';\necho str_replace('Mobile', 'Cloud', $text);\nvar_dump(strpos($text, 'Mobile'));",
+          "answer_code": "Web Technology\nbool(false)",
+          "language": "php",
+          "alternatives": ""
+        },
+        {
+          "label": "4(b)",
+          "marks": 8,
+          "question": "Write a PHP function result($mark) returning A for 80+, B for 70-79, C for 60-69 and F below 60. Display the result for 75.",
+          "answer": "Use a parameter, correctly ordered conditions, return all categories and call with 75 to display B.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Function/parameter"
+            },
+            {
+              "marks": 4,
+              "criterion": "Four correct ranges/categories"
+            },
+            {
+              "marks": 1,
+              "criterion": "Returns"
+            },
+            {
+              "marks": 1,
+              "criterion": "Call"
+            },
+            {
+              "marks": 1,
+              "criterion": "Output B"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "function result($mark) {\n    if ($mark >= 80) return 'A';\n    if ($mark >= 70) return 'B';\n    if ($mark >= 60) return 'C';\n    return 'F';\n}\necho result(75);",
+          "language": "php",
+          "alternatives": "if/elseif, match or another equivalent valid control structure is accepted."
+        }
+      ]
+    },
+    {
+      "question": 5,
+      "chapter": 5,
+      "marks": 5,
+      "parts": [
+        {
+          "label": "5(a)",
+          "marks": 3,
+          "question": "Explain stateless HTTP and state one role of a cookie and one role of a session.",
+          "answer": "Requests are independent; a cookie stores client-side values; a session stores server-side state linked to a client/session identifier.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Stateless"
+            },
+            {
+              "marks": 1,
+              "criterion": "Cookie"
+            },
+            {
+              "marks": 1,
+              "criterion": "Session"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "5(b)",
+          "marks": 2,
+          "question": "State two benefits of AJAX for live search.",
+          "answer": "Any two: partial update, responsiveness, reduced full-page transfer, asynchronous interaction.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "First benefit"
+            },
+            {
+              "marks": 1,
+              "criterion": "Second benefit"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "question": 6,
+      "chapter": 6,
+      "marks": 16,
+      "parts": [
+        {
+          "label": "6(a)",
+          "marks": 6,
+          "question": "Write MySQL DDL for courses with course_id as AUTO_INCREMENT primary key, code VARCHAR(10) UNIQUE and title VARCHAR(100) NOT NULL.",
+          "answer": "Use CREATE TABLE and all stated constraints.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "CREATE TABLE"
+            },
+            {
+              "marks": 2,
+              "criterion": "AUTO_INCREMENT id"
+            },
+            {
+              "marks": 1,
+              "criterion": "Primary key"
+            },
+            {
+              "marks": 1,
+              "criterion": "Unique code"
+            },
+            {
+              "marks": 1,
+              "criterion": "Not-null title"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "CREATE TABLE courses (\n  course_id INT AUTO_INCREMENT PRIMARY KEY,\n  code VARCHAR(10) NOT NULL UNIQUE,\n  title VARCHAR(100) NOT NULL\n);",
+          "language": "sql",
+          "alternatives": ""
+        },
+        {
+          "label": "6(b)",
+          "marks": 5,
+          "question": "students(student_id,name) and registrations(student_id,course_code,mark) are related. Write SQL to list name and mark for ICT600, highest mark first.",
+          "answer": "Join by student_id, filter ICT600 and order by mark descending.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Columns"
+            },
+            {
+              "marks": 1,
+              "criterion": "Tables"
+            },
+            {
+              "marks": 1,
+              "criterion": "Join"
+            },
+            {
+              "marks": 1,
+              "criterion": "Filter"
+            },
+            {
+              "marks": 1,
+              "criterion": "Order"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "SELECT s.name, r.mark\nFROM students s\nJOIN registrations r ON r.student_id = s.student_id\nWHERE r.course_code = 'ICT600'\nORDER BY r.mark DESC;",
+          "language": "sql",
+          "alternatives": ""
+        },
+        {
+          "label": "6(c)",
+          "marks": 5,
+          "question": "Using an existing MySQLi connection $conn, show the core prepared-statement steps to insert $name and $email into students(name,email).",
+          "answer": "Prepare placeholders, bind two strings, execute and close.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Prepare INSERT"
+            },
+            {
+              "marks": 1,
+              "criterion": "Bind"
+            },
+            {
+              "marks": 1,
+              "criterion": "Execute"
+            },
+            {
+              "marks": 1,
+              "criterion": "Close"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "$stmt = mysqli_prepare($conn,\n  'INSERT INTO students (name, email) VALUES (?, ?)');\nmysqli_stmt_bind_param($stmt, 'ss', $name, $email);\nmysqli_stmt_execute($stmt);\nmysqli_stmt_close($stmt);",
+          "language": "php",
+          "alternatives": "An equivalent PDO prepared statement receives full credit."
+        }
+      ]
+    },
+    {
+      "question": 7,
+      "chapter": 7,
+      "marks": 10,
+      "parts": [
+        {
+          "label": "7(a)",
+          "marks": 6,
+          "question": "Explain the roles of Model, View and Controller.",
+          "answer": "Model: data/business data logic. View: presentation. Controller: handles request/input and coordinates model/view.",
+          "rubric": [
+            {
+              "marks": 2,
+              "criterion": "Model"
+            },
+            {
+              "marks": 2,
+              "criterion": "View"
+            },
+            {
+              "marks": 2,
+              "criterion": "Controller"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "7(b)",
+          "marks": 4,
+          "question": "State two advantages and two disadvantages of using a framework.",
+          "answer": "Advantages may include reuse, structure or speed; disadvantages may include learning curve, overhead, dependency, reduced flexibility or framework security risk.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Advantage"
+            },
+            {
+              "marks": 1,
+              "criterion": "Advantage"
+            },
+            {
+              "marks": 1,
+              "criterion": "Disadvantage"
+            },
+            {
+              "marks": 1,
+              "criterion": "Disadvantage"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "question": 8,
+      "chapter": 8,
+      "marks": 5,
+      "parts": [
+        {
+          "label": "8(a)",
+          "marks": 5,
+          "question": "A mobile client needs a lightweight JSON interface, while a partner requires a strict XML service contract. Recommend REST or SOAP for each and justify each recommendation.",
+          "answer": "REST for the mobile JSON interface; SOAP for the strict XML contract. Reasons must connect resource-oriented HTTP/lightweight representation and SOAP/WSDL contract/message standards to the scenarios.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "REST selection"
+            },
+            {
+              "marks": 1,
+              "criterion": "REST reason"
+            },
+            {
+              "marks": 1,
+              "criterion": "SOAP selection"
+            },
+            {
+              "marks": 1,
+              "criterion": "SOAP reason"
+            },
+            {
+              "marks": 1,
+              "criterion": "Clear comparison"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    },
+    {
+      "question": 9,
+      "chapter": 9,
+      "marks": 10,
+      "parts": [
+        {
+          "label": "9(a)",
+          "marks": 6,
+          "question": "For each case, identify the vulnerability and primary correction: SQL concatenates user input; a comment is printed without encoding; a password is stored as plain text.",
+          "answer": "SQL injection/prepared statement; XSS/contextual output encoding; password exposure/password_hash plus password_verify.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "SQL injection"
+            },
+            {
+              "marks": 1,
+              "criterion": "Prepared statement"
+            },
+            {
+              "marks": 1,
+              "criterion": "XSS"
+            },
+            {
+              "marks": 1,
+              "criterion": "Encoding"
+            },
+            {
+              "marks": 1,
+              "criterion": "Password weakness"
+            },
+            {
+              "marks": 1,
+              "criterion": "Hash/verify"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        },
+        {
+          "label": "9(b)",
+          "marks": 4,
+          "question": "State four controls for secure authenticated sessions.",
+          "answer": "Any four: HTTPS; regenerate ID after login; Secure/HttpOnly/SameSite cookie; no IDs in URLs; inactivity/absolute timeout; destroy on logout; server-side authorisation on every request.",
+          "rubric": [
+            {
+              "marks": 1,
+              "criterion": "Valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Valid control"
+            },
+            {
+              "marks": 1,
+              "criterion": "Valid control"
+            }
+          ],
+          "prompt_code": "",
+          "answer_code": "",
+          "language": "text",
+          "alternatives": ""
+        }
+      ]
+    }
+  ]
+}
