@@ -19,6 +19,16 @@ Open <https://ilmu-repo.github.io/ict600-revision-hub/> on any phone or computer
 4. Ask students to commit to subjective or coding answers before revealing the model.
 5. Discuss common review items, then let students retry them.
 
+## Use the flashcards
+
+1. From the home page, choose **Study flashcards**.
+2. Select the chapter completed in class.
+3. Ask students to recall the answer before revealing the card.
+4. Students rate each card **Again**, **Learning** or **Remembered**.
+5. Use **Review cards not remembered** for a focused second pass.
+
+Flashcard memory is stored separately from activity mastery. Colour identifies the kind of memory work—such as a term, comparison or code pattern—and every colour also has a label and symbol.
+
 ## Use the past-paper library
 
 1. From the home page, choose **Browse past papers**.

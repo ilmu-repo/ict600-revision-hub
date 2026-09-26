@@ -1,12 +1,16 @@
-const CACHE = "ict600-revision-v5";
+const CACHE = "ict600-revision-v6";
 const CORE = [
   "./",
   "./index.html",
   "./exams.html",
+  "./flashcards.html",
   "./assets/styles.css",
   "./assets/engine.js",
   "./assets/app.js",
+  "./assets/flashcard-engine.js",
+  "./assets/flashcards.js",
   "./data/questions.js",
+  "./data/flashcards.js",
   "./manifest.webmanifest",
   "./favicon.svg",
   "./icons/icon-192.png",

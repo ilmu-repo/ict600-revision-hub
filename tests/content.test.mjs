@@ -9,7 +9,9 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const context = { window: {} };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(root, "site/data/questions.js"), "utf8"), context);
+vm.runInContext(fs.readFileSync(path.join(root, "site/data/flashcards.js"), "utf8"), context);
 const data = context.window.ICT600_DATA;
+const flashData = context.window.ICT600_FLASHCARDS;
 
 test("contains nine chapters and six unique activities per chapter", () => {
   assert.equal(data.chapters.length, 9);
@@ -32,7 +34,7 @@ test("every activity contains the fields required by its interaction", () => {
 
 test("offline cache lists existing files", () => {
   const serviceWorker = fs.readFileSync(path.join(root, "site/sw.js"), "utf8");
-  assert.match(serviceWorker, /ict600-revision-v5/);
+  assert.match(serviceWorker, /ict600-revision-v6/);
   const match = serviceWorker.match(/const CORE = \[([\s\S]*?)\];/);
   assert.ok(match);
   const files = [...match[1].matchAll(/"\.\/(.*?)"/g)].map((entry) => entry[1]).filter(Boolean);
@@ -51,6 +53,34 @@ test("dashboard explains shared mastery and provides session resume controls", (
   assert.match(home, /Chapter mastery is shared across all review styles/i);
   assert.match(home, /id="resumeSession"/);
   assert.match(home, /id="restartSession"/);
+  assert.match(home, /href="flashcards\.html"/);
+});
+
+test("flashcard bank has 25 varied, traceable cards for every chapter", () => {
+  assert.equal(flashData.cards.length, 225);
+  assert.equal(new Set(flashData.cards.map((card) => card.id)).size, 225);
+  const validCategories = new Set(Object.keys(flashData.categories));
+  data.chapters.forEach((chapter) => {
+    const cards = flashData.cards.filter((card) => card.chapter === chapter.id);
+    assert.equal(cards.length, 25, `Chapter ${chapter.id} should have 25 cards`);
+    assert.ok(new Set(cards.map((card) => card.category)).size >= 3, `Chapter ${chapter.id} needs varied card types`);
+  });
+  flashData.cards.forEach((card) => {
+    assert.ok(card.id && card.front && card.back && card.source, `Incomplete flashcard ${card.id}`);
+    assert.ok(validCategories.has(card.category), `Unknown category for ${card.id}`);
+  });
+  assert.deepEqual(new Set(flashData.cards.map((card) => card.category)), validCategories);
+});
+
+test("flashcard page exposes accessible study controls and all required scripts", () => {
+  const page = fs.readFileSync(path.join(root, "site/flashcards.html"), "utf8");
+  ["flashChapterGrid", "flashCategoryFilters", "flashCard", "flipCard", "ratingActions", "reviewWeak"].forEach((id) => {
+    assert.match(page, new RegExp(`id="${id}"`));
+  });
+  assert.match(page, /data\/flashcards\.js/);
+  assert.match(page, /assets\/flashcard-engine\.js/);
+  assert.match(page, /assets\/flashcards\.js/);
+  assert.match(page, /meaning never depends on colour alone/i);
 });
 
 test("exam library exposes eleven questions while schemes remain under review", () => {

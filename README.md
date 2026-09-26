@@ -10,8 +10,9 @@ A mobile-first revision app for Chapters 1–9 of ICT600. It combines quick reca
 
 - Four review styles: Lecture wrap-up, Quick recall, Guided practice and Full challenge
 - 54 activities across nine chapters
+- 225 colour-coded flashcards across nine chapters, including terms, processes, comparisons and code patterns
 - Dark, high-contrast coding workspace
-- Local progress and targeted retry list
+- Separate local trackers for activity mastery and flashcard memory, plus targeted retry modes
 - Installable on a phone and available offline after the first visit
 - Shareable direct link for each chapter
 - Past-paper library with seven final examinations and four Test 1 sessions
@@ -37,7 +38,11 @@ The published address for this project is <https://ilmu-repo.github.io/ict600-re
 
 Question content is in `site/data/questions.js`. Every activity has a unique ID, chapter, type, prompt, answer/model, explanation/checklist and source note. Keep six activities per chapter for the standard lecture wrap-up. Run `npm test` after changing scoring logic.
 
+Flashcard content is in `site/data/flashcards.js`. Keep the category label and colour meaningful, maintain 25 cards per chapter for the current release, and include a mix of terms, patterns, code, comparisons, processes and security habits. Flashcard ratings are deliberately separate from activity mastery.
+
 Past-paper files are in `site/resources/exams`. The student-facing index is `site/exams.html`; keep the question and corrected scheme as a matched pair when adding a session, but do not expose scheme or pack links until the publication gate passes.
+
+For the complete reusable method—from source auditing and scheme correction to tracking, testing and deployment—see [SUBJECT-REVISION-HUB-WORKFLOW.md](SUBJECT-REVISION-HUB-WORKFLOW.md).
 
 ## Privacy
 
